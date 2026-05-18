@@ -61,12 +61,12 @@
         🎓 <span class="font-bold">Projecte fictici</span> per a l’assignatura <span class="italic font-semibold">‘Disseny i gestió de projectes d'e-learning’</span> dins del <span class="font-bold">Màster universitari Online d'Educació i TIC (eLearning)</span> de la UOC.
     </div>
 
-    <!-- NAVEGACIÓ PRINCIPAL DE CONVERSIÓ (TÍTOLS REQUERITS PER LA TUTORA) -->
+    <!-- NAVEGACIÓ PRINCIPAL FIXADA AMB DETECTOR ACTIU EN SCROLL I SUPORT DE PÀGINES -->
     <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100 transition-all">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logotip corporatiu utilitzant la imatge de la carpeta imagen de GitHub sense text de costat duplicat -->
-                <div class="flex items-center cursor-pointer" onclick="navigateTo('home')">
+                <div class="flex items-center cursor-pointer" onclick="navigateToLanding('home')">
                     <img src="imagen/logo.jpg" alt="Logo VAOM EduTech" class="h-12 w-auto object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <!-- Fallback elegant en cas que la imatge encara no estigui al directori local -->
                     <div class="hidden px-4 py-2 rounded-xl bg-gradient-to-tr from-purple-800 to-indigo-600 items-center justify-center text-white font-heading font-bold text-sm shadow-md">
@@ -74,25 +74,24 @@
                     </div>
                 </div>
 
-                <!-- Menú d'escriptori estructurat exactament com es demana -->
+                <!-- Menú d'escriptori estructurat de forma fluida i enllaçat a l'scroll continu -->
                 <nav class="hidden md:flex space-x-1 lg:space-x-3">
-                    <button onclick="navigateTo('home')" id="nav-home" class="px-3.5 py-2 text-sm font-semibold text-gray-600 hover:text-primary transition-all rounded-md">Inici</button>
-                    <button onclick="navigateTo('projecte')" id="nav-projecte" class="px-3.5 py-2 text-sm font-semibold text-gray-600 hover:text-primary transition-all rounded-md">Projecte</button>
-                    <button onclick="navigateTo('curs')" id="nav-curs" class="px-3.5 py-2 text-sm font-semibold text-gray-600 hover:text-primary transition-all rounded-md">Curs</button>
-                    <button onclick="navigateTo('empresa')" id="nav-empresa" class="px-3.5 py-2 text-sm font-semibold text-gray-600 hover:text-primary transition-all rounded-md">Empresa</button>
-                    <button onclick="navigateTo('blog')" id="nav-blog" class="px-3.5 py-2 text-sm font-semibold text-gray-600 hover:text-primary transition-all rounded-md">Blog</button>
-                    <button onclick="navigateTo('testimonis')" id="nav-testimonis" class="px-3.5 py-2 text-sm font-semibold text-gray-600 hover:text-primary transition-all rounded-md">Testimonis</button>
+                    <button onclick="navigateToLanding('home')" id="nav-home" class="px-3.5 py-2 text-sm font-semibold text-gray-600 hover:text-primary transition-all rounded-md">Inici</button>
+                    <button onclick="navigateToLanding('projecte')" id="nav-projecte" class="px-3.5 py-2 text-sm font-semibold text-gray-600 hover:text-primary transition-all rounded-md">Projecte</button>
+                    <button onclick="navigateToLanding('curs')" id="nav-curs" class="px-3.5 py-2 text-sm font-semibold text-gray-600 hover:text-primary transition-all rounded-md">Curs</button>
+                    <button onclick="navigateToLanding('empresa')" id="nav-empresa" class="px-3.5 py-2 text-sm font-semibold text-gray-600 hover:text-primary transition-all rounded-md">Empresa</button>
+                    <button onclick="navigateToBlog()" id="nav-blog" class="px-3.5 py-2 text-sm font-semibold text-gray-600 hover:text-primary transition-all rounded-md">Blog</button>
                 </nav>
 
-                <!-- Botó d'acció de la capçalera que redirigeix directament a la pestanya del Curs -->
+                <!-- Botó de crida a l'acció (CTA) que redirigeix directament a la secció unificada del Curs -->
                 <div class="hidden md:flex items-center">
-                    <button onclick="navigateTo('curs')" class="bg-primary hover:bg-purple-900 text-white font-bold text-xs lg:text-sm px-6 py-3 rounded-xl transition-all shadow-md shadow-purple-950/20 flex items-center gap-2">
+                    <button onclick="navigateToLanding('curs')" class="bg-primary hover:bg-purple-900 text-white font-bold text-xs lg:text-sm px-6 py-3 rounded-xl transition-all shadow-md shadow-purple-950/20 flex items-center gap-2">
                         <span>Veure el curs</span>
                         <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </button>
                 </div>
 
-                <!-- Botó de menu mòbil -->
+                <!-- Botó de menú mòbil -->
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="text-gray-600 hover:text-primary focus:outline-none p-2 rounded-lg hover:bg-gray-100">
                         <i data-lucide="menu" class="w-6 h-6" id="menu-icon"></i>
@@ -103,680 +102,705 @@
 
         <!-- Menú desplegable per a mòbils -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 px-4 pt-2 pb-6 space-y-2 transition-all">
-            <button onclick="navigateTo('home'); toggleMobileMenu()" class="block w-full text-left px-4 py-3 text-base font-semibold text-gray-700 hover:bg-purple-50 hover:text-primary rounded-lg">Inici</button>
-            <button onclick="navigateTo('projecte'); toggleMobileMenu()" class="block w-full text-left px-4 py-3 text-base font-semibold text-gray-700 hover:bg-purple-50 hover:text-primary rounded-lg">Projecte</button>
-            <button onclick="navigateTo('curs'); toggleMobileMenu()" class="block w-full text-left px-4 py-3 text-base font-semibold text-gray-700 hover:bg-purple-50 hover:text-primary rounded-lg">Curs</button>
-            <button onclick="navigateTo('empresa'); toggleMobileMenu()" class="block w-full text-left px-4 py-3 text-base font-semibold text-gray-700 hover:bg-purple-50 hover:text-primary rounded-lg">Empresa</button>
-            <button onclick="navigateTo('blog'); toggleMobileMenu()" class="block w-full text-left px-4 py-3 text-base font-semibold text-gray-700 hover:bg-purple-50 hover:text-primary rounded-lg">Blog</button>
-            <button onclick="navigateTo('testimonis'); toggleMobileMenu()" class="block w-full text-left px-4 py-3 text-base font-semibold text-gray-700 hover:bg-purple-50 hover:text-primary rounded-lg">Testimonis</button>
+            <button onclick="navigateToLanding('home'); toggleMobileMenu()" class="block w-full text-left px-4 py-3 text-base font-semibold text-gray-700 hover:bg-purple-50 hover:text-primary rounded-lg">Inici</button>
+            <button onclick="navigateToLanding('projecte'); toggleMobileMenu()" class="block w-full text-left px-4 py-3 text-base font-semibold text-gray-700 hover:bg-purple-50 hover:text-primary rounded-lg">Projecte</button>
+            <button onclick="navigateToLanding('curs'); toggleMobileMenu()" class="block w-full text-left px-4 py-3 text-base font-semibold text-gray-700 hover:bg-purple-50 hover:text-primary rounded-lg">Curs</button>
+            <button onclick="navigateToLanding('empresa'); toggleMobileMenu()" class="block w-full text-left px-4 py-3 text-base font-semibold text-gray-700 hover:bg-purple-50 hover:text-primary rounded-lg">Empresa</button>
+            <button onclick="navigateToBlog(); toggleMobileMenu()" class="block w-full text-left px-4 py-3 text-base font-semibold text-gray-700 hover:bg-purple-50 hover:text-primary rounded-lg">Blog</button>
             <div class="pt-4 border-t border-gray-100">
-                <button onclick="navigateTo('curs'); toggleMobileMenu()" class="w-full bg-primary text-white text-center py-3 rounded-lg font-bold shadow-md">
+                <button onclick="navigateToLanding('curs'); toggleMobileMenu()" class="w-full bg-primary text-white text-center py-3 rounded-lg font-bold shadow-md">
                     Veure el curs
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- ÀREA DE CONTINGUT (PÀGINES MULTI-SECCIÓ INTERACTIVES) -->
+    <!-- ÀREA DE CONTINGUT (SPA: LANDING PAGE VS PÀGINA DE BLOG) -->
     <main class="flex-grow">
 
-        <!-- ================= PAGE 1: HOME ================= -->
-        <section id="page-home" class="page-section">
-            <!-- Hero Section Comercial -->
-            <div class="purple-gradient text-white py-20 lg:py-28 relative overflow-hidden">
-                <div class="absolute inset-0 opacity-10">
-                    <div class="absolute -top-10 -left-10 w-96 h-96 rounded-full bg-white filter blur-3xl"></div>
-                    <div class="absolute -bottom-10 -right-10 w-96 h-96 rounded-full bg-indigo-500 filter blur-3xl"></div>
+        <!-- ================= CONTENIDOR DE LANDING PAGE (SCROLL INFINIT) ================= -->
+        <div id="landing-page-container" class="transition-all duration-300">
+
+            <!-- ================= SECCIÓ 1: INICI (HOME) ================= -->
+            <section id="home" class="scroll-mt-20">
+                <!-- Hero Section Comercial -->
+                <div class="purple-gradient text-white py-20 lg:py-28 relative overflow-hidden">
+                    <div class="absolute inset-0 opacity-10">
+                        <div class="absolute -top-10 -left-10 w-96 h-96 rounded-full bg-white filter blur-3xl"></div>
+                        <div class="absolute -bottom-10 -right-10 w-96 h-96 rounded-full bg-indigo-500 filter blur-3xl"></div>
+                    </div>
+
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                            <div class="lg:col-span-7 space-y-6">
+                                <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-white/10 text-purple-200 border border-white/20 uppercase tracking-widest">
+                                    <span class="w-2 h-2 rounded-full bg-purple-400 animate-pulse"></span>
+                                    Convocatòria de Juliol 2026 Oberta
+                                </span>
+                                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight font-heading leading-tight">
+                                    Puja de nivell amb la <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-indigo-200">IA</span>!
+                                </h1>
+                                <p class="text-lg sm:text-xl text-purple-100/90 leading-relaxed max-w-xl font-light">
+                                    Formació d'elit per a docents i equips directius. Apreneu a utilitzar la intel·ligència artificial de manera pràctica, ètica i estratègica mitjançant micro-píndoles de coneixement gamificades.
+                                </p>
+                                <p class="font-heading italic text-purple-200 text-sm tracking-wide bg-white/5 inline-block px-5 py-2.5 rounded-xl border border-white/10">
+                                    "Decideix amb criteri. Ensenya amb impacte."
+                                </p>
+                                
+                                <div class="pt-4 flex flex-col sm:flex-row gap-4">
+                                    <button onclick="navigateToLanding('curs')" class="bg-white hover:bg-purple-100 text-primary font-bold px-8 py-4 rounded-xl transition-all shadow-lg text-center flex items-center justify-center gap-2">
+                                        <span>Veure el curs</span>
+                                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                                    </button>
+                                    <button onclick="scrollToVideo()" class="border border-white/30 hover:bg-white/10 text-white font-semibold px-6 py-4 rounded-xl transition-all text-center flex items-center justify-center gap-2">
+                                        <span>Veure el Teaser Oficial</span>
+                                        <i data-lucide="play" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Mini Mockup de Conversió (Plataforma Odissea en acció) -->
+                            <div class="lg:col-span-5">
+                                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-2xl">
+                                    <div class="flex items-center justify-between mb-4 pb-4 border-b border-white/10">
+                                        <div class="flex items-center space-x-2">
+                                            <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                                            <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                                            <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                                        </div>
+                                        <span class="text-xs text-purple-200 font-mono">ENTORN VIRTUAL · VAOM APPS</span>
+                                    </div>
+                                    <div class="space-y-4">
+                                        <div class="bg-white/5 p-3.5 rounded-xl border border-white/5 flex items-center justify-between">
+                                            <div class="flex items-center space-x-3">
+                                                <span class="text-xl">🏆</span>
+                                                <div>
+                                                    <h4 class="text-sm font-bold text-white">Repte 1 completat</h4>
+                                                    <p class="text-xs text-purple-200">La IA no sempre té raó</p>
+                                                </div>
+                                            </div>
+                                            <span class="text-xs bg-green-500/80 text-white px-2.5 py-0.5 rounded-full font-bold">100 XP</span>
+                                        </div>
+                                        <div class="bg-white/15 p-3.5 rounded-xl border border-white/25 flex items-center justify-between">
+                                            <div class="flex items-center space-x-3">
+                                                <span class="text-xl">👾</span>
+                                                <div>
+                                                    <h4 class="text-sm font-bold text-white">Repte 2 en progrés</h4>
+                                                    <p class="text-xs text-purple-200">La IA com a aliada docent</p>
+                                                </div>
+                                            </div>
+                                            <span class="text-xs bg-yellow-500 text-white px-2.5 py-0.5 rounded-full font-bold animate-pulse">Actiu</span>
+                                        </div>
+                                        <div class="bg-white/5 p-3.5 rounded-xl border border-white/5 opacity-50 flex items-center justify-between">
+                                            <div class="flex items-center space-x-3">
+                                                <span class="text-xl">🔒</span>
+                                                <div>
+                                                    <h4 class="text-sm font-bold text-white">Repte 3 bloquejat</h4>
+                                                    <p class="text-xs text-purple-200">Quan l'alumnat utilitza IA</p>
+                                                </div>
+                                            </div>
+                                            <span class="text-xs bg-gray-500/50 text-white px-2 py-0.5 rounded-full font-bold">Bloq</span>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-purple-200">
+                                        <span>Nivell Competencial: CDD-IA Intermedi</span>
+                                        <span>Punts: 320 XP</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                        <div class="lg:col-span-7 space-y-6">
-                            <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-white/10 text-purple-200 border border-white/20 uppercase tracking-widest">
-                                <span class="w-2 h-2 rounded-full bg-purple-400 animate-pulse"></span>
-                                Convocatòria de Juliol 2026 Oberta
-                            </span>
-                            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight font-heading leading-tight">
-                                Puja de nivell amb la <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-indigo-200">IA</span>!
-                            </h1>
-                            <p class="text-lg sm:text-xl text-purple-100/90 leading-relaxed max-w-xl font-light">
-                                Formació d'elit per a docents i equips directius. Apreneu a utilitzar la intel·ligència artificial de manera pràctica, ètica i estratègica mitjançant micro-píndoles de coneixement gamificades.
-                            </p>
-                            <p class="font-heading italic text-purple-200 text-sm tracking-wide bg-white/5 inline-block px-5 py-2.5 rounded-xl border border-white/10">
-                                "Decideix amb criteri. Ensenya amb impacte."
-                            </p>
-                            
-                            <div class="pt-4 flex flex-col sm:flex-row gap-4">
-                                <button onclick="navigateTo('curs')" class="bg-white hover:bg-purple-100 text-primary font-bold px-8 py-4 rounded-xl transition-all shadow-lg text-center flex items-center justify-center gap-2">
-                                    <span>Veure el curs</span>
-                                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
-                                </button>
-                                <button onclick="scrollToVideo()" class="border border-white/30 hover:bg-white/10 text-white font-semibold px-6 py-4 rounded-xl transition-all text-center flex items-center justify-center gap-2">
-                                    <span>Veure el Teaser Oficial</span>
-                                    <i data-lucide="play" class="w-4 h-4"></i>
+                <!-- ESPAI TEASER DE VÍDEO COMPROMÈS I INTEGRAT -->
+                <div id="video-teaser-section" class="py-20 bg-white border-b border-gray-100">
+                    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+                        <div class="text-center mb-10">
+                            <span class="text-xs font-bold text-primary bg-purple-100 px-3 py-1.5 rounded-full uppercase tracking-wider">Teaser de Presentació</span>
+                            <h2 class="text-3xl font-bold font-heading text-gray-900 mt-2">Vídeo Promocional: Puja de nivell amb la IA!</h2>
+                            <p class="text-gray-600 text-sm mt-1">Descobreix la finalitat, metodologia i el funcionament de la nostra acció de captació.</p>
+                        </div>
+
+                        <!-- Reproductor de vídeo de captació -->
+                        <div class="bg-black rounded-3xl overflow-hidden shadow-2xl aspect-video border-4 border-white relative group">
+                            <video id="teaser-video" controls class="w-full h-full object-cover" poster="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1200">
+                                <source src="videos/teaser.mp4" type="video/mp4">
+                                El teu navegador no suporta la reproducció directa de vídeos.
+                            </video>
+                            <div class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-all pointer-events-none" id="video-overlay">
+                                <button class="w-20 h-20 rounded-full bg-primary/90 text-white flex items-center justify-center shadow-lg transition-transform group-hover:scale-110">
+                                    <i data-lucide="play" class="w-8 h-8 ml-1 fill-current"></i>
                                 </button>
                             </div>
                         </div>
+                    </div>
+                </div>
 
-                        <!-- Mini Mockup de Conversió (Plataforma Odissea en acció) -->
-                        <div class="lg:col-span-5">
-                            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-2xl">
-                                <div class="flex items-center justify-between mb-4 pb-4 border-b border-white/10">
-                                    <div class="flex items-center space-x-2">
-                                        <div class="w-3 h-3 rounded-full bg-red-400"></div>
-                                        <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
-                                        <div class="w-3 h-3 rounded-full bg-green-400"></div>
-                                    </div>
-                                    <span class="text-xs text-purple-200 font-mono">ENTORN VIRTUAL · VAOM APPS</span>
+                <!-- Característiques clau de captació -->
+                <div class="py-20 soft-gradient border-b border-gray-100">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
+                            <!-- Feature 1 -->
+                            <div class="flex flex-col items-center text-center p-6 bg-white rounded-2xl shadow-sm hover:shadow transition-all duration-300">
+                                <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center text-primary mb-6 shadow-sm">
+                                    <i data-lucide="gamepad-2" class="w-8 h-8"></i>
                                 </div>
-                                <div class="space-y-4">
-                                    <div class="bg-white/5 p-3.5 rounded-xl border border-white/5 flex items-center justify-between">
-                                        <div class="flex items-center space-x-3">
-                                            <span class="text-xl">🏆</span>
-                                            <div>
-                                                <h4 class="text-sm font-bold text-white">Repte 1 completat</h4>
-                                                <p class="text-xs text-purple-200">La IA no sempre té raó</p>
-                                            </div>
-                                        </div>
-                                        <span class="text-xs bg-green-500/80 text-white px-2.5 py-0.5 rounded-full font-bold">100 XP</span>
-                                    </div>
-                                    <div class="bg-white/15 p-3.5 rounded-xl border border-white/25 flex items-center justify-between">
-                                        <div class="flex items-center space-x-3">
-                                            <span class="text-xl">👾</span>
-                                            <div>
-                                                <h4 class="text-sm font-bold text-white">Repte 2 en progrés</h4>
-                                                <p class="text-xs text-purple-200">La IA com a aliada docent</p>
-                                            </div>
-                                        </div>
-                                        <span class="text-xs bg-yellow-500 text-white px-2.5 py-0.5 rounded-full font-bold animate-pulse">Actiu</span>
-                                    </div>
-                                    <div class="bg-white/5 p-3.5 rounded-xl border border-white/5 opacity-50 flex items-center justify-between">
-                                        <div class="flex items-center space-x-3">
-                                            <span class="text-xl">🔒</span>
-                                            <div>
-                                                <h4 class="text-sm font-bold text-white">Repte 3 bloquejat</h4>
-                                                <p class="text-xs text-purple-200">Quan l'alumnat utilitza IA</p>
-                                            </div>
-                                        </div>
-                                        <span class="text-xs bg-gray-500/50 text-white px-2 py-0.5 rounded-full font-bold">Bloq</span>
-                                    </div>
+                                <h3 class="text-xl font-bold font-heading mb-2 text-gray-900">Gamificació d'Alt Nivell</h3>
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    Un enfocament educatiu de nova generació. Allibereu el potent del vostre claustre a través de reptes immersius d'aula.
+                                </p>
+                            </div>
+
+                            <!-- Feature 2 -->
+                            <div class="flex flex-col items-center text-center p-6 bg-white rounded-2xl shadow-sm hover:shadow transition-all duration-300">
+                                <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center text-primary mb-6 shadow-sm">
+                                    <i data-lucide="git-branch" class="w-8 h-8"></i>
                                 </div>
-                                <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-purple-200">
-                                    <span>Nivell Competencial: CDD-IA Intermedi</span>
-                                    <span>Punts: 320 XP</span>
+                                <h3 class="text-xl font-bold font-heading mb-2 text-gray-900">Itineraris Adaptatius</h3>
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    Adaptem el contingut segons el nivell previ de competència digital de cada docent de manera intel·ligent i respectuosa.
+                                </p>
+                            </div>
+
+                            <!-- Feature 3 -->
+                            <div class="flex flex-col items-center text-center p-6 bg-white rounded-2xl shadow-sm hover:shadow transition-all duration-300">
+                                <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center text-primary mb-6 shadow-sm">
+                                    <i data-lucide="award" class="w-8 h-8"></i>
                                 </div>
+                                <h3 class="text-xl font-bold font-heading mb-2 text-gray-900">Alineació amb el MRCDD</h3>
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    Formació totalment acreditada i alineada amb els requisits de la Competència Digital Docent actuals del territori.
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <!-- ESPAI TEASER DE VÍDEO COMPROMÈS I INTEGRAT -->
-            <div id="video-teaser-section" class="py-20 bg-white border-b border-gray-100">
-                <div class="max-w-4xl mx-auto px-4 sm:px-6">
-                    <div class="text-center mb-10">
-                        <span class="text-xs font-bold text-primary bg-purple-100 px-3 py-1.5 rounded-full uppercase tracking-wider">Teaser de Presentació</span>
-                        <h2 class="text-3xl font-bold font-heading text-gray-900 mt-2">Vídeo Promocional: Puja de nivell amb la IA!</h2>
-                        <p class="text-gray-600 text-sm mt-1">Descobreix la finalitat, metodologia i el funcionament de la nostra acció de captació.</p>
-                    </div>
-
-                    <!-- Reproductor de vídeo de captació -->
-                    <div class="bg-black rounded-3xl overflow-hidden shadow-2xl aspect-video border-4 border-white relative group">
-                        <video id="teaser-video" controls class="w-full h-full object-cover" poster="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1200">
-                            <!-- Ruta relativa directa de la carpeta videos/teaser.mp4 de GitHub -->
-                            <source src="videos/teaser.mp4" type="video/mp4">
-                            El teu navegador no suporta la reproducció directa de vídeos.
-                        </video>
-                        <div class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-all pointer-events-none" id="video-overlay">
-                            <button class="w-20 h-20 rounded-full bg-primary/90 text-white flex items-center justify-center shadow-lg transition-transform group-hover:scale-110">
-                                <i data-lucide="play" class="w-8 h-8 ml-1 fill-current"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Característiques clau de captació -->
-            <div class="py-20 soft-gradient border-b border-gray-100">
+            <!-- ================= SECCIÓ 2: EL PROJECTE ================= -->
+            <section id="projecte" class="py-20 bg-gray-50 border-b border-gray-100 scroll-mt-20">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
-                        <!-- Feature 1 -->
-                        <div class="flex flex-col items-center text-center p-6 bg-white rounded-2xl shadow-sm hover:shadow transition-all duration-300">
-                            <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center text-primary mb-6 shadow-sm">
-                                <i data-lucide="gamepad-2" class="w-8 h-8"></i>
-                            </div>
-                            <h3 class="text-xl font-bold font-heading mb-2 text-gray-900">Gamificació d'Alt Nivell</h3>
-                            <p class="text-gray-600 text-sm leading-relaxed">
-                                Un enfocament educatiu de nova generació. Allibereu el potent del vostre claustre a través de reptes immersius d'aula.
-                            </p>
-                        </div>
-
-                        <!-- Feature 2 -->
-                        <div class="flex flex-col items-center text-center p-6 bg-white rounded-2xl shadow-sm hover:shadow transition-all duration-300">
-                            <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center text-primary mb-6 shadow-sm">
-                                <i data-lucide="git-branch" class="w-8 h-8"></i>
-                            </div>
-                            <h3 class="text-xl font-bold font-heading mb-2 text-gray-900">Itineraris Adaptatius</h3>
-                            <p class="text-gray-600 text-sm leading-relaxed">
-                                Adaptem el contingut segons el nivell previ de competència digital de cada docent de manera intel·ligent i respectuosa.
-                            </p>
-                        </div>
-
-                        <!-- Feature 3 -->
-                        <div class="flex flex-col items-center text-center p-6 bg-white rounded-2xl shadow-sm hover:shadow transition-all duration-300">
-                            <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center text-primary mb-6 shadow-sm">
-                                <i data-lucide="award" class="w-8 h-8"></i>
-                            </div>
-                            <h3 class="text-xl font-bold font-heading mb-2 text-gray-900">Alineació amb el MRCDD</h3>
-                            <p class="text-gray-600 text-sm leading-relaxed">
-                                Formació totalment acreditada i alineada amb els requisits de la Competència Digital Docent actuals del territori.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Secció de tancament de venda -->
-            <div class="py-16 bg-gray-50 border-b border-gray-100">
-                <div class="max-w-4xl mx-auto px-4 text-center space-y-4">
-                    <h2 class="text-2xl font-bold font-heading text-gray-900">Sota la confiança pedagògica dels líders educatius</h2>
-                    <p class="text-gray-600 text-sm max-w-2xl mx-auto leading-relaxed">
-                        Ens allunyem de cursos instrumentals ràpids d'eines que canvien setmanalment. Proposem una base de decisió metodològica contrastada, fonamentada en els paradigmes actuals del <strong>TPACK</strong>, el <strong>DUA</strong> i l'aprenentatge situat.
-                    </p>
-                    <button onclick="navigateTo('projecte')" class="text-primary font-semibold text-sm hover:underline inline-flex items-center gap-1">
-                        Saber més sobre el nostre model <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- ================= PAGE 2: L'EMPRESA ================= -->
-        <section id="page-empresa" class="page-section hidden py-16">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                
-                <!-- Presentació i Visió Comercial -->
-                <div class="text-center max-w-3xl mx-auto mb-16">
-                    <span class="text-sm font-semibold text-primary uppercase tracking-widest block mb-2">Qui som</span>
-                    <h1 class="text-4xl font-extrabold font-heading text-gray-900">VAOM EduTech</h1>
-                    <p class="text-gray-600 mt-4 text-lg leading-relaxed">
-                        Som una signatura líder i especialitzada en el disseny de formació digital d'avantguarda per al sector educatiu. Mitjançant metodologies actives i la darrera tecnologia pedagògica, acompanyem institucions en la seva transformació digital real.
-                    </p>
-                </div>
-
-                <!-- Missió i Visió Targetes B2B -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
-                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-all">
-                        <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-primary mb-6">
-                            <i data-lucide="compass" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold font-heading text-gray-900 mb-3">La nostra visió</h3>
-                        <p class="text-gray-600 leading-relaxed text-sm">
-                            Posicionar-nos com el partner estratègic clau de centres educatius que cerquen una integració coherent, ètica i respectuosa amb la privadesa de la Intel·ligència Artificial a les seves aules.
-                        </p>
-                    </div>
-
-                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-all">
-                        <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-primary mb-6">
-                            <i data-lucide="history" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold font-heading text-gray-900 mb-3">Trajectòria i Experiència d'Èxit</h3>
-                        <p class="text-gray-600 leading-relaxed text-sm">
-                            El nostre team atresora una provada línia de treball amb administracions públiques del país que avalen els nostres dissenys de qualitat:
-                        </p>
-                        <div class="mt-4 pt-4 border-t border-gray-100 space-y-2">
-                            <div class="flex justify-between items-center text-xs">
-                                <span class="font-bold text-gray-700">🏆 Projecte IA-Edu</span>
-                                <span class="bg-purple-100 text-primary px-2.5 py-1 rounded-full font-semibold">Consorci d'Educació de Barcelona</span>
-                            </div>
-                            <div class="flex justify-between items-center text-xs">
-                                <span class="font-bold text-gray-700">🌐 Escoles Connectades</span>
-                                <span class="bg-purple-100 text-primary px-2.5 py-1 rounded-full font-semibold">Departament d'Educació</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- L'Equip Consultor -->
-                <div class="border-t border-gray-200 pt-16">
-                    <div class="text-center mb-12">
-                        <h2 class="text-3xl font-bold font-heading text-gray-900">L'Equip Promotor</h2>
-                        <p class="text-gray-600 mt-2 text-sm max-w-xl mx-auto">Especialistes amb àmplia experiència en consultoria d'e-learning, educació i canvi metodològic.</p>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <!-- Alba Canas -->
-                        <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all text-center">
-                            <div class="w-24 h-24 mx-auto rounded-full bg-purple-100 flex items-center justify-center mb-4 border-2 border-primary/20">
-                                <span class="text-3xl font-heading font-bold text-primary">AC</span>
-                            </div>
-                            <h3 class="text-lg font-bold font-heading text-gray-900">Alba Canas</h3>
-                            <p class="text-xs font-semibold text-primary/80 uppercase tracking-widest mt-1">Responsable de Qualitat</p>
-                            <p class="text-xs text-gray-500 mt-3 leading-relaxed">
-                                Mestra de primària, coordinadora digital i assessora experta en disseny i control de qualitat pedagògic.
-                            </p>
-                        </div>
-
-                        <!-- Miquel Àngel Fuentes -->
-                        <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all text-center">
-                            <div class="w-24 h-24 mx-auto rounded-full bg-purple-100 flex items-center justify-center mb-4 border-2 border-primary/20">
-                                <span class="text-3xl font-heading font-bold text-primary">MF</span>
-                            </div>
-                            <h3 class="text-lg font-bold font-heading text-gray-900">Miquel Àngel Fuentes</h3>
-                            <p class="text-xs font-semibold text-primary/80 uppercase tracking-widest mt-1">Responsable de Planificació</p>
-                            <p class="text-xs text-gray-500 mt-3 leading-relaxed">
-                                Expert en integració d'eines lingüístiques, implementador de canvi digital i assessor digital.
-                            </p>
-                        </div>
-
-                        <!-- Oriol Sánchez -->
-                        <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all text-center">
-                            <div class="w-24 h-24 mx-auto rounded-full bg-purple-100 flex items-center justify-center mb-4 border-2 border-primary/20">
-                                <span class="text-3xl font-heading font-bold text-primary">OS</span>
-                            </div>
-                            <h3 class="text-lg font-bold font-heading text-gray-900">Oriol Sánchez</h3>
-                            <p class="text-xs font-semibold text-primary/80 uppercase tracking-widest mt-1">Disseny Tecnopedagògic</p>
-                            <p class="text-xs text-gray-500 mt-3 leading-relaxed">
-                                Dissenyador d'instrucció, especialista en gamificació, narrativa d'entorns i producció audiovisual dinàmica.
-                            </p>
-                        </div>
-
-                        <!-- Víctor Palomares -->
-                        <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all text-center">
-                            <div class="w-24 h-24 mx-auto rounded-full bg-purple-100 flex items-center justify-center mb-4 border-2 border-primary/20">
-                                <span class="text-3xl font-heading font-bold text-primary">VP</span>
-                            </div>
-                            <h3 class="text-lg font-bold font-heading text-gray-900">Víctor Palomares</h3>
-                            <p class="text-xs font-semibold text-primary/80 uppercase tracking-widest mt-1">Coordinació General</p>
-                            <p class="text-xs text-gray-500 mt-3 leading-relaxed">
-                                Expert en ètica de dades, seguretat escolar digital, programari lliure i codi obert institucional.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ================= PAGE 3: EL PROJECTE & MODEL PEDAGÒGIC ================= -->
-        <section id="page-projecte" class="page-section hidden py-16">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                
-                <!-- Justificació de Venda -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-                    <div class="space-y-6">
-                        <span class="text-xs font-bold text-red-600 bg-red-100 px-3 py-1.5 rounded-full uppercase tracking-wider">El Desafiament</span>
-                        <h2 class="text-3xl sm:text-4xl font-extrabold font-heading text-gray-900 leading-tight">Superem la bretxa de la integració de la IA</h2>
-                        <div class="space-y-4 text-gray-600 text-sm">
-                            <p class="border-l-4 border-primary pl-4 py-1 italic font-semibold text-gray-800">
-                                "La majoria de docents disposen de pantalles i connexió a les seves aules, però no d'una formació amb criteri crític. La IA ha esclatat als centres sense unes guies clares de decisió pedagògica."
-                            </p>
-                            <p>
-                                El nostre model pedagògic fuig del simple consum de programari. Dotem el claustre de marcs d'acció per redissenyar les seves tasques acadèmiques de manera que l'alumnat desenvolupi capacitats cognitives superiors, on la IA actua com a eina col·laboradora i no com a substitut de l'esforç humà.
-                            </p>
-                        </div>
-                    </div>
                     
-                    <div class="bg-primary text-white p-8 rounded-3xl shadow-xl relative overflow-hidden">
-                        <span class="text-xs font-bold text-purple-200 bg-white/10 px-3 py-1 rounded-full uppercase tracking-wider">La Diferència VAOM</span>
-                        <h3 class="text-2xl font-bold font-heading mt-4 mb-4">Garantia d'Impacte Real</h3>
-                        <p class="text-purple-100 text-sm leading-relaxed mb-6">
-                            Oferim itineraris adaptats al claustre que s'ajusten de manera fluida al nivell digital d'inici de cada professor. Una oportunitat única per homogeneïtzar la competència interna de forma amena.
-                        </p>
-                        <div class="space-y-2 text-xs">
-                            <div class="flex items-center gap-2">
-                                <i data-lucide="check" class="w-4 h-4 text-green-400"></i>
-                                <span>Alineació curricular oficial assegurada.</span>
+                    <!-- Justificació de Venda -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+                        <div class="space-y-6">
+                            <span class="text-xs font-bold text-red-600 bg-red-100 px-3 py-1.5 rounded-full uppercase tracking-wider">El Desafiament</span>
+                            <h2 class="text-3xl sm:text-4xl font-extrabold font-heading text-gray-900 leading-tight">Superem la bretxa de la integració de la IA</h2>
+                            <div class="space-y-4 text-gray-600 text-sm">
+                                <p class="border-l-4 border-primary pl-4 py-1 italic font-semibold text-gray-800">
+                                    "La majoria de docents disposen de pantalles i connexió a les seves aules, però no d'una formació amb criteri crític. La IA ha esclatat als centres sense unes guies clares de decisió pedagògica."
+                                </p>
+                                <p>
+                                    El nostre model pedagògic fuig del simple consum de programari. Dotem el claustre de marcs d'acció per redissenyar les seves tasques acadèmiques de manera que l'alumnat desenvolupi capacitats cognitives superiors, on la IA actua com a eina col·laboradora i no com a substitut de l'esforç humà.
+                                </p>
                             </div>
-                            <div class="flex items-center gap-2">
-                                <i data-lucide="check" class="w-4 h-4 text-green-400"></i>
-                                <span>Plataforma d'alta escalabilitat preparat per a centres sencers.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Fonamentació i Solucions del Sector -->
-                <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm mb-16">
-                    <h3 class="text-2xl font-bold font-heading text-gray-900 mb-6 flex items-center gap-2">
-                        <i data-lucide="shield-check" class="text-primary w-6 h-6"></i>
-                        Principis Metodològics de l'E-learning corporatiu
-                    </h3>
-                    <p class="text-gray-600 text-sm mb-6">
-                        Les nostres decisions de disseny de contingut responen de manera directa als estandards i necessitats formatives dels docents del segle XXI:
-                    </p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-gray-600">
-                        <div class="p-5 bg-purple-50 rounded-xl border border-purple-100 space-y-2">
-                            <h4 class="font-bold text-gray-900">Enfocament de Competència Pràctica</h4>
-                            <p class="italic">
-                                "L'autèntic aprenentatge digital neix de l'adaptació i el disseny d'itineraris d'acció d'aula crítics, en lloc de la simple memorització d'instruccions tecnològiques."
-                            </p>
-                        </div>
-                        <div class="p-5 bg-purple-50 rounded-xl border border-purple-100 space-y-2">
-                            <h4 class="font-bold text-gray-900">Garantia DUA i Inclusió</h4>
-                            <p class="italic">
-                                "Assegurem rutes alternatives d'aprenentatge mitjançant el Disseny Universal per a l'Aprenentatge, garantint l'accés a docents amb diferents ritmes laborals."
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ================= PAGE 4: EL CURS ================= -->
-        <section id="page-curs" class="page-section hidden py-16">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                
-                <!-- Presentació del Programari -->
-                <div class="text-center max-w-3xl mx-auto mb-12">
-                    <span class="text-xs font-bold text-primary bg-purple-100 px-3 py-1.5 rounded-full uppercase tracking-wider">L'Itinerari Formatiu</span>
-                    <h1 class="text-4xl font-extrabold font-heading text-gray-900 mt-4">La nostra arquitectura curricular</h1>
-                    <p class="text-gray-600 mt-2 text-sm">Continguts modulars i micro-píndoles enfocades a l'excel·lència professional.</p>
-                </div>
-
-                <!-- Grid de Paràmetres del Producte -->
-                <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12">
-                    <div class="bg-white p-5 rounded-2xl border border-gray-100 text-center shadow-sm">
-                        <span class="text-2xl block mb-2">⏱️</span>
-                        <h4 class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Durada de l'Acció</h4>
-                        <p class="text-lg font-bold font-heading text-primary mt-1">10 Hores</p>
-                    </div>
-                    <div class="bg-white p-5 rounded-2xl border border-gray-100 text-center shadow-sm">
-                        <span class="text-2xl block mb-2">🌐</span>
-                        <h4 class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Format Virtual</h4>
-                        <p class="text-lg font-bold font-heading text-primary mt-1">100% Asíncron</p>
-                    </div>
-                    <div class="bg-white p-5 rounded-2xl border border-gray-100 text-center shadow-sm">
-                        <span class="text-2xl block mb-2">📅</span>
-                        <h4 class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Edició Activa</h4>
-                        <p class="text-lg font-bold font-heading text-primary mt-1">Juliol 2026</p>
-                    </div>
-                    <div class="bg-white p-5 rounded-2xl border border-gray-100 text-center shadow-sm">
-                        <span class="text-2xl block mb-2">👥</span>
-                        <h4 class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Mida de Cohort</h4>
-                        <p class="text-lg font-bold font-heading text-primary mt-1">200 Participants</p>
-                    </div>
-                    <div class="bg-white p-5 rounded-2xl border border-gray-100 text-center shadow-sm col-span-2 md:col-span-1">
-                        <span class="text-2xl block mb-2">🚀</span>
-                        <h4 class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Integració LMS</h4>
-                        <p class="text-lg font-bold font-heading text-primary mt-1">Moodle / Odissea</p>
-                    </div>
-                </div>
-
-                <!-- Els 7 Reptes: VISUALITZADOR INTERACTIU DE VIVÈNCIA DE PLATAFORMA -->
-                <div class="bg-white rounded-3xl p-6 sm:p-8 border border-gray-100 shadow-sm mb-16">
-                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 pb-4 border-b border-gray-100">
-                        <div>
-                            <h3 class="text-2xl font-bold font-heading text-gray-900">Navega pels 7 mòduls estructurals</h3>
-                            <p class="text-gray-500 text-xs mt-1">Fes clic sobre cadascun dels reptes per comprovar la distribució i la qualitat de contingut.</p>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                        <!-- Navegació dels Reptes en format llista interactiva -->
-                        <div class="lg:col-span-5 space-y-2">
-                            <button onclick="selectChallenge(0)" id="btn-challenge-0" class="w-full text-left p-4 rounded-xl border border-primary bg-purple-50/50 text-gray-900 flex items-center justify-between transition-all font-semibold text-sm">
-                                <span>Repte 0: Diagnosi i punt de partida</span>
-                                <span class="bg-primary text-white text-xs px-2 py-0.5 rounded-md font-mono">1h</span>
-                            </button>
-                            <button onclick="selectChallenge(1)" id="btn-challenge-1" class="w-full text-left p-4 rounded-xl border border-gray-100 hover:bg-gray-50 text-gray-700 flex items-center justify-between transition-all text-sm">
-                                <span>Repte 1: La IA no sempre té raó</span>
-                                <span class="bg-gray-200 text-gray-700 text-xs px-2 py-0.5 rounded-md font-mono">2h</span>
-                            </button>
-                            <button onclick="selectChallenge(2)" id="btn-challenge-2" class="w-full text-left p-4 rounded-xl border border-gray-100 hover:bg-gray-50 text-gray-700 flex items-center justify-between transition-all text-sm">
-                                <span>Repte 2: La IA com a aliada docent</span>
-                                <span class="bg-gray-200 text-gray-700 text-xs px-2 py-0.5 rounded-md font-mono">2h</span>
-                            </button>
-                            <button onclick="selectChallenge(3)" id="btn-challenge-3" class="w-full text-left p-4 rounded-xl border border-gray-100 hover:bg-gray-50 text-gray-700 flex items-center justify-between transition-all text-sm">
-                                <span>Repte 3: Quan l'alumnat utilitza IA</span>
-                                <span class="bg-gray-200 text-gray-700 text-xs px-2 py-0.5 rounded-md font-mono">2h</span>
-                            </button>
-                            <button onclick="selectChallenge(4)" id="btn-challenge-4" class="w-full text-left p-4 rounded-xl border border-gray-100 hover:bg-gray-50 text-gray-700 flex items-center justify-between transition-all text-sm">
-                                <span>Repte 4: Dissenyar activitats no substituïbles</span>
-                                <span class="bg-gray-200 text-gray-700 text-xs px-2 py-0.5 rounded-md font-mono">2h</span>
-                            </button>
-                            <button onclick="selectChallenge(5)" id="btn-challenge-5" class="w-full text-left p-4 rounded-xl border border-gray-100 hover:bg-gray-50 text-gray-700 flex items-center justify-between transition-all text-sm">
-                                <span>Repte 5: Disseny d'indicacions (prompts)</span>
-                                <span class="bg-gray-200 text-gray-700 text-xs px-2 py-0.5 rounded-md font-mono">1h</span>
-                            </button>
-                            <button onclick="selectChallenge(6)" id="btn-challenge-6" class="w-full text-left p-4 rounded-xl border border-gray-100 hover:bg-gray-50 text-gray-700 flex items-center justify-between transition-all text-sm">
-                                <span>Repte 6: Transferència (Producte Final)</span>
-                                <span class="bg-gray-200 text-gray-700 text-xs px-2 py-0.5 rounded-md font-mono">1h</span>
-                            </button>
-                        </div>
-
-                        <!-- Detalls dinàmics del mòdul seleccionat -->
-                        <div class="lg:col-span-7 bg-gray-50 p-6 rounded-2xl border border-gray-200 flex flex-col justify-between">
-                            <div id="challenge-detail-content" class="space-y-4">
-                                <div class="flex items-center space-x-3 text-primary">
-                                    <span class="text-3xl">🎯</span>
-                                    <h4 class="text-xl font-bold font-heading" id="chall-title">Repte 0 — Diagnosi i punt de partida</h4>
-                                </div>
-                                <p class="text-gray-600 text-sm leading-relaxed" id="chall-desc">
-                                    Primer contacte interactiu amb el curs. L'objectiu és situar el teu punt de partida competencial, conèixer el teu nivell de sortida pel que fa a coneixements d'IA i familiaritzar-te amb l'entorn de treball virtual de l'Odissea.</p>
-                                <div class="bg-white p-4 rounded-xl border border-gray-100 space-y-2">
-                                    <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block">Metes i Adquisicions</span>
-                                    <ul class="text-xs text-gray-600 space-y-1.5" id="chall-bullets">
-                                        <li class="flex items-center gap-2">🕹️ Test interactiu inicial de diagnòstic CDD-IA.</li>
-                                        <li class="flex items-center gap-2">💬 Presentació personal al fòrum col·laboratiu inicial.</li>
-                                        <li class="flex items-center gap-2">📁 Descàrrega de la teva fitxa de ruta d'aprenentatge.</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="mt-6 pt-4 border-t border-gray-200 flex items-center justify-between">
-                                <span class="text-xs text-gray-400 font-mono" id="chall-duration">Durada recomanada: 1 hora</span>
-                                <span class="bg-green-100 text-green-800 text-xs px-2.5 py-1 rounded-full font-bold">Disponible</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TEST COMPETÈNCIA DIGITAL DOCENT (SIMULADOR DE RUTA DE CAPTACIÓ) -->
-                <div class="bg-gradient-to-tr from-purple-950 to-purple-800 text-white rounded-3xl p-8 shadow-xl">
-                    <div class="max-w-3xl mx-auto">
-                        <div class="text-center mb-8">
-                            <span class="bg-white/10 text-purple-200 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">Comprova el teu potencial</span>
-                            <h3 class="text-2xl font-bold font-heading mt-2">Mesura la teva competència inicial en 1 minut</h3>
-                            <p class="text-purple-200 text-xs mt-1">Eina digital interactiva de diagnosi de rutes formatives adaptatives.</p>
                         </div>
                         
-                        <div id="quiz-container" class="bg-white/5 p-6 rounded-2xl border border-white/10 space-y-6">
-                            <div id="quiz-question-box">
-                                <span class="text-xs text-purple-300 font-mono block mb-1">Pregunta 1 de 3</span>
-                                <h4 class="text-base font-bold" id="quiz-question-text">Com actues quan una eina d'IA et dona una resposta per a una tasca docent?</h4>
-                                <div class="mt-4 space-y-2">
-                                    <button onclick="answerQuiz(0, 0)" class="w-full text-left p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-xs transition-all">
-                                        A) L'aplico directament sense fer gaires modificacions per estalviar temps.
-                                    </button>
-                                    <button onclick="answerQuiz(0, 1)" class="w-full text-left p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-xs transition-all">
-                                        B) L'analitzo, la contrasto i hi aplico adaptacions d'acord amb el meu context de grup-classe.
-                                    </button>
-                                    <button onclick="answerQuiz(0, 2)" class="w-full text-left p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-xs transition-all">
-                                        C) No me'n fido gens ni l'utilitzo; prefereixo de dalt a baix els mètodes tradicionals del centre.
-                                    </button>
+                        <div class="bg-primary text-white p-8 rounded-3xl shadow-xl relative overflow-hidden">
+                            <span class="text-xs font-bold text-purple-200 bg-white/10 px-3 py-1 rounded-full uppercase tracking-wider">La Diferència VAOM</span>
+                            <h3 class="text-2xl font-bold font-heading mt-4 mb-4">Garantia d'Impacte Real</h3>
+                            <p class="text-purple-100 text-sm leading-relaxed mb-6">
+                                Oferim itineraris adaptats al claustre que s'ajusten de manera fluida al nivell digital d'inici de cada professor. Una oportunitat única per homogeneïtzar la competència interna de forma amena.
+                            </p>
+                            <div class="space-y-2 text-xs">
+                                <div class="flex items-center gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-green-400"></i>
+                                    <span>Alineació curricular oficial assegurada.</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-green-400"></i>
+                                    <span>Plataforma d'alta escalabilitat preparat per a centres sencers.</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-            </div>
-        </section>
-
-        <!-- ================= PAGE 5: BLOG (NOVA SECCIÓ DE CAPTACIÓ) ================= -->
-        <section id="page-blog" class="page-section hidden py-16">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6">
-                
-                <!-- Capçalera del Blog -->
-                <div class="text-center mb-12">
-                    <span class="text-xs font-bold text-primary bg-purple-100 px-3 py-1.5 rounded-full uppercase tracking-wider">Idees i Tendències</span>
-                    <h1 class="text-4xl font-extrabold font-heading text-gray-900 mt-4">El nostre Blog Pedagògic</h1>
-                    <p class="text-gray-500 text-sm mt-2">Analitzem el futur de l'aprenentatge amb la intel·ligència artificial.</p>
-                </div>
-
-                <!-- Entrada del Blog per Fomentar l'enganxe -->
-                <article class="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-all">
-                    <!-- Imatge d'estil placeholder de qualitat -->
-                    <div class="h-64 sm:h-80 bg-purple-900 relative flex items-center justify-center overflow-hidden">
-                        <div class="absolute inset-0 bg-cover bg-center opacity-50 bg-[url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1200')]"></div>
-                        <div class="relative z-10 text-center p-6 text-white space-y-2">
-                            <span class="bg-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Tecnopedagogia</span>
-                            <h2 class="text-2xl sm:text-3xl font-bold font-heading">Intel·ligència Artificial a l'aula: Més enllà dels "prompts màgics"</h2>
-                            <p class="text-xs text-purple-200">Publicat el 18 de Maig de 2026 • Per l'equip de VAOM EduTech</p>
+                    <!-- Fonamentació i Solucions del Sector -->
+                    <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm">
+                        <h3 class="text-2xl font-bold font-heading text-gray-900 mb-6 flex items-center gap-2">
+                            <i data-lucide="shield-check" class="text-primary w-6 h-6"></i>
+                            Principis Metodològics de l'E-learning corporatiu
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-6">
+                            Les nostres decisions de disseny de contingut responen de manera directa als estandards i necessitats formatives dels docents del segle XXI:
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-gray-600">
+                            <div class="p-5 bg-purple-50 rounded-xl border border-purple-100 space-y-2">
+                                <h4 class="font-bold text-gray-900">Enfocament de Competència Pràctica</h4>
+                                <p class="italic">
+                                    "L'autèntic aprenentatge digital neix de l'adaptació i el disseny d'itineraris d'acció d'aula crítics, en lloc de la simple memorització d'instruccions tecnològiques."
+                                </p>
+                            </div>
+                            <div class="p-5 bg-purple-50 rounded-xl border border-purple-100 space-y-2">
+                                <h4 class="font-bold text-gray-900">Garantia DUA i Inclusió</h4>
+                                <p class="italic">
+                                    "Assegurem rutes alternatives d'aprenentatge mitjançant el Disseny Universal per a l'Aprenentatge, garantint l'accés a docents amb diferents ritmes laborals."
+                                </p>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Contingut del Post -->
-                    <div class="p-8 sm:p-10 space-y-6 text-sm text-gray-600 leading-relaxed">
-                        <p class="text-base font-semibold text-gray-900">
+                </div>
+            </section>
+
+            <!-- ================= SECCIÓ 3: EL CURS (FUSIONAT: CURS + TESTIMONIS + INSCRIPCIÓ) ================= -->
+            <section id="curs" class="py-20 bg-white border-b border-gray-100 scroll-mt-20">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    
+                    <!-- Presentació del Programa -->
+                    <div class="text-center max-w-3xl mx-auto mb-12">
+                        <span class="text-xs font-bold text-primary bg-purple-100 px-3 py-1.5 rounded-full uppercase tracking-wider">L'Itinerari Formatiu</span>
+                        <h2 class="text-4xl font-extrabold font-heading text-gray-900 mt-4">La nostra arquitectura curricular</h2>
+                        <p class="text-gray-600 mt-2 text-sm">Continguts modulars i micro-píndoles enfocades a l'excel·lència professional.</p>
+                    </div>
+
+                    <!-- Grid de Paràmetres del Producte -->
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12">
+                        <div class="bg-gray-50 p-5 rounded-2xl border border-gray-100 text-center shadow-sm">
+                            <span class="text-2xl block mb-2">⏱️</span>
+                            <h4 class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Durada de l'Acció</h4>
+                            <p class="text-lg font-bold font-heading text-primary mt-1">10 Hores</p>
+                        </div>
+                        <div class="bg-gray-50 p-5 rounded-2xl border border-gray-100 text-center shadow-sm">
+                            <span class="text-2xl block mb-2">🌐</span>
+                            <h4 class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Format Virtual</h4>
+                            <p class="text-lg font-bold font-heading text-primary mt-1">100% Asíncron</p>
+                        </div>
+                        <div class="bg-gray-50 p-5 rounded-2xl border border-gray-100 text-center shadow-sm">
+                            <span class="text-2xl block mb-2">📅</span>
+                            <h4 class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Edició Activa</h4>
+                            <p class="text-lg font-bold font-heading text-primary mt-1">Juliol 2026</p>
+                        </div>
+                        <div class="bg-gray-50 p-5 rounded-2xl border border-gray-100 text-center shadow-sm">
+                            <span class="text-2xl block mb-2">👥</span>
+                            <h4 class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Mida de Cohort</h4>
+                            <p class="text-lg font-bold font-heading text-primary mt-1">200 Participants</p>
+                        </div>
+                        <div class="bg-gray-50 p-5 rounded-2xl border border-gray-100 text-center shadow-sm">
+                            <span class="text-2xl block mb-2">🚀</span>
+                            <h4 class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Integració LMS</h4>
+                            <p class="text-lg font-bold font-heading text-primary mt-1">Moodle / Odissea</p>
+                        </div>
+                    </div>
+
+                    <!-- Els 7 Reptes: VISUALITZADOR INTERACTIU DE VIVÈNCIA DE PLATAFORMA -->
+                    <div class="bg-gray-50 rounded-3xl p-6 sm:p-8 border border-gray-200 shadow-sm mb-16">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 pb-4 border-b border-gray-200">
+                            <div>
+                                <h3 class="text-2xl font-bold font-heading text-gray-900">Navega pels 7 mòduls estructurals</h3>
+                                <p class="text-gray-500 text-xs mt-1">Fes clic sobre cadascun dels reptes per comprovar la distribució i la qualitat de contingut.</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                            <!-- Navegació dels Reptes en format llista interactiva -->
+                            <div class="lg:col-span-5 space-y-2">
+                                <button onclick="selectChallenge(0)" id="btn-challenge-0" class="w-full text-left p-4 rounded-xl border border-primary bg-white text-gray-900 flex items-center justify-between transition-all font-semibold text-sm shadow-sm">
+                                    <span>Repte 0: Diagnosi i punt de partida</span>
+                                    <span class="bg-primary text-white text-xs px-2 py-0.5 rounded-md font-mono">1h</span>
+                                </button>
+                                <button onclick="selectChallenge(1)" id="btn-challenge-1" class="w-full text-left p-4 rounded-xl border border-gray-100 bg-white/70 hover:bg-white text-gray-700 flex items-center justify-between transition-all text-sm">
+                                    <span>Repte 1: La IA no sempre té raó</span>
+                                    <span class="bg-gray-200 text-gray-700 text-xs px-2 py-0.5 rounded-md font-mono">2h</span>
+                                </button>
+                                <button onclick="selectChallenge(2)" id="btn-challenge-2" class="w-full text-left p-4 rounded-xl border border-gray-100 bg-white/70 hover:bg-white text-gray-700 flex items-center justify-between transition-all text-sm">
+                                    <span>Repte 2: La IA com a aliada docent</span>
+                                    <span class="bg-gray-200 text-gray-700 text-xs px-2 py-0.5 rounded-md font-mono">2h</span>
+                                </button>
+                                <button onclick="selectChallenge(3)" id="btn-challenge-3" class="w-full text-left p-4 rounded-xl border border-gray-100 bg-white/70 hover:bg-white text-gray-700 flex items-center justify-between transition-all text-sm">
+                                    <span>Repte 3: Quan l'alumnat utilitza IA</span>
+                                    <span class="bg-gray-200 text-gray-700 text-xs px-2 py-0.5 rounded-md font-mono">2h</span>
+                                </button>
+                                <button onclick="selectChallenge(4)" id="btn-challenge-4" class="w-full text-left p-4 rounded-xl border border-gray-100 bg-white/70 hover:bg-white text-gray-700 flex items-center justify-between transition-all text-sm">
+                                    <span>Repte 4: Dissenyar activitats no substituïbles</span>
+                                    <span class="bg-gray-200 text-gray-700 text-xs px-2 py-0.5 rounded-md font-mono">2h</span>
+                                </button>
+                                <button onclick="selectChallenge(5)" id="btn-challenge-5" class="w-full text-left p-4 rounded-xl border border-gray-100 bg-white/70 hover:bg-white text-gray-700 flex items-center justify-between transition-all text-sm">
+                                    <span>Repte 5: Disseny d'indicacions (prompts)</span>
+                                    <span class="bg-gray-200 text-gray-700 text-xs px-2 py-0.5 rounded-md font-mono">1h</span>
+                                </button>
+                                <button onclick="selectChallenge(6)" id="btn-challenge-6" class="w-full text-left p-4 rounded-xl border border-gray-100 bg-white/70 hover:bg-white text-gray-700 flex items-center justify-between transition-all text-sm">
+                                    <span>Repte 6: Transferència (Producte Final)</span>
+                                    <span class="bg-gray-200 text-gray-700 text-xs px-2 py-0.5 rounded-md font-mono">1h</span>
+                                </button>
+                            </div>
+
+                            <!-- Detalls dinàmics del mòdul seleccionat -->
+                            <div class="lg:col-span-7 bg-white p-6 rounded-2xl border border-gray-200 flex flex-col justify-between shadow-sm">
+                                <div id="challenge-detail-content" class="space-y-4">
+                                    <div class="flex items-center space-x-3 text-primary">
+                                        <span class="text-3xl">🎯</span>
+                                        <h4 class="text-xl font-bold font-heading" id="chall-title">Repte 0 — Diagnosi i punt de partida</h4>
+                                    </div>
+                                    <p class="text-gray-600 text-sm leading-relaxed" id="chall-desc">
+                                        Primer contacte interactiu amb el curs. L'objectiu és situar el teu punt de partida competencial, conèixer el teu nivell de sortida pel que fa a coneixements d'IA i familiaritzar-te amb l'entorn de treball virtual de l'Odissea.</p>
+                                    <div class="bg-gray-50 p-4 rounded-xl border border-gray-100 space-y-2">
+                                        <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block">Metes i Adquisicions</span>
+                                        <ul class="text-xs text-gray-600 space-y-1.5" id="chall-bullets">
+                                            <li class="flex items-center gap-2">🕹️ Test interactiu inicial de diagnòstic CDD-IA.</li>
+                                            <li class="flex items-center gap-2">💬 Presentació personal al fòrum col·laboratiu inicial.</li>
+                                            <li class="flex items-center gap-2">📁 Descàrrega de la teva fitxa de ruta d'aprenentatge.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="mt-6 pt-4 border-t border-gray-200 flex items-center justify-between">
+                                    <span class="text-xs text-gray-400 font-mono" id="chall-duration">Durada recomanada: 1 hora</span>
+                                    <span class="bg-green-100 text-green-800 text-xs px-2.5 py-1 rounded-full font-bold">Disponible</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TEST COMPETÈNCIA DIGITAL DOCENT (SIMULADOR DE RUTA) -->
+                    <div class="bg-gradient-to-tr from-purple-950 to-purple-800 text-white rounded-3xl p-8 shadow-xl mb-20">
+                        <div class="max-w-3xl mx-auto">
+                            <div class="text-center mb-8">
+                                <span class="bg-white/10 text-purple-200 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">Comprova el teu potencial</span>
+                                <h3 class="text-2xl font-bold font-heading mt-2">Mesura la teva competència inicial en 1 minut</h3>
+                                <p class="text-purple-200 text-xs mt-1">Eina digital interactiva de diagnosi de rutes formatives adaptatives de l'Odissea.</p>
+                            </div>
+                            
+                            <div id="quiz-container" class="bg-white/5 p-6 rounded-2xl border border-white/10 space-y-6">
+                                <div id="quiz-question-box">
+                                    <span class="text-xs text-purple-300 font-mono block mb-1">Pregunta 1 de 3</span>
+                                    <h4 class="text-base font-bold" id="quiz-question-text">Com actues quan una eina d'IA et dona una resposta per a una tasca docent?</h4>
+                                    <div class="mt-4 space-y-2">
+                                        <button onclick="answerQuiz(0, 0)" class="w-full text-left p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-xs transition-all">
+                                            A) L'aplico directament sense fer gaires modificacions per estalviar temps.
+                                        </button>
+                                        <button onclick="answerQuiz(0, 1)" class="w-full text-left p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-xs transition-all">
+                                            B) L'analitzo, la contrasto i hi aplico adaptacions d'acord amb el meu context de grup-classe.
+                                        </button>
+                                        <button onclick="answerQuiz(0, 2)" class="w-full text-left p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-xs transition-all">
+                                            C) No me'n fido gens ni l'utilitzo; prefereixo de dalt a baix els mètodes tradicionals del centre.
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ================= FUSIONAT: TESTIMONIS ================= -->
+                    <div class="border-t border-gray-100 pt-16 mb-20">
+                        <div class="text-center max-w-2xl mx-auto mb-12">
+                            <span class="text-xs font-bold text-primary bg-purple-100 px-3 py-1.5 rounded-full uppercase tracking-wider">La veu dels usuaris</span>
+                            <h3 class="text-3xl font-bold font-heading text-gray-900 mt-4">Experiències de Centres Associats</h3>
+                            <p class="text-gray-500 text-sm mt-2">Diferents docents que han format part de les nostres cohorts prèvies avalen el canvi metodològic.</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <!-- Testimoni 1 -->
+                            <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100 shadow-sm flex flex-col justify-between hover:shadow-md transition-all">
+                                <div class="space-y-4">
+                                    <div class="flex text-yellow-400">
+                                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                    </div>
+                                    <p class="text-gray-600 text-sm italic leading-relaxed">
+                                        "Aquest curs m'ha canviat del tot la manera d'entendre la intel·ligència artificial dins de l'aula. Nova perspectiva adaptativa."
+                                    </p>
+                                </div>
+                                <div class="mt-6 pt-4 border-t border-gray-200 flex items-center space-x-3">
+                                    <div class="w-10 h-10 rounded-full bg-purple-100 text-primary flex items-center justify-center font-bold font-heading">
+                                        MG
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-bold text-gray-900">Marta G.</h4>
+                                        <p class="text-xs text-gray-400">Secundària, Barcelona</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Testimoni 2 -->
+                            <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100 shadow-sm flex flex-col justify-between hover:shadow-md transition-all">
+                                <div class="space-y-4">
+                                    <div class="flex text-yellow-400">
+                                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                    </div>
+                                    <p class="text-gray-600 text-sm italic leading-relaxed">
+                                        "Els reptes gamificats em van enganxar per complet des del primer dia. Recomano el format micro-píndoles de 10 hores."
+                                    </p>
+                                </div>
+                                <div class="mt-6 pt-4 border-t border-gray-200 flex items-center space-x-3">
+                                    <div class="w-10 h-10 rounded-full bg-purple-100 text-primary flex items-center justify-center font-bold font-heading">
+                                        JP
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-bold text-gray-900">Jordi P.</h4>
+                                        <p class="text-xs text-gray-400">Mestre de Primària, Girona</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Testimoni 3 -->
+                            <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100 shadow-sm flex flex-col justify-between hover:shadow-md transition-all">
+                                <div class="space-y-4">
+                                    <div class="flex text-yellow-400">
+                                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                    </div>
+                                    <p class="text-gray-600 text-sm italic leading-relaxed">
+                                        "Per fi trobo una formació professional que se centra a ensenyar-te com pensar pedagògicament d'una manera coherent."
+                                    </p>
+                                </div>
+                                <div class="mt-6 pt-4 border-t border-gray-200 flex items-center space-x-3">
+                                    <div class="w-10 h-10 rounded-full bg-purple-100 text-primary flex items-center justify-center font-bold font-heading">
+                                        AR
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-bold text-gray-900">Anna R.</h4>
+                                        <p class="text-xs text-gray-400">Professora de Batxillerat, Tarragona</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ================= FUSIONAT: FORMULARI D'INSCRIPCIÓ / CAPTACIÓ ================= -->
+                    <div class="border-t border-gray-100 pt-16">
+                        <div class="bg-gray-50 border border-gray-200 rounded-3xl p-8 max-w-xl mx-auto shadow-sm">
+                            <h3 class="text-xl font-bold font-heading text-center text-gray-900 mb-2">Inscriu o demana pressupost per al teu centre</h3>
+                            <p class="text-center text-xs text-gray-500 mb-6">Comença el canvi tecnològic amb un model adaptat i dinàmic.</p>
+                            <form onsubmit="handleContactSubmit(event)" class="space-y-4 text-xs">
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Nom del Sol·licitant / Director</label>
+                                    <input type="text" required class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="La vostra identificació">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Correu electrònic institucional</label>
+                                    <input type="email" required class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="nom@xtec.cat o similar">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Mida aproximada de claustre i dubtes</label>
+                                    <textarea rows="3" required class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="Com et podem ajudar..."></textarea>
+                                </div>
+                                <button type="submit" class="w-full bg-primary hover:bg-purple-900 text-white font-bold py-3.5 rounded-xl transition-all shadow-md text-sm">
+                                    Sol·licitar Informació de Places i Preus
+                                  </button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ================= SECCIÓ 4: L'EMPRESA ================= -->
+            <section id="empresa" class="py-20 bg-gray-50 border-b border-gray-100 scroll-mt-20">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    
+                    <!-- Presentació i Visió Comercial -->
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <span class="text-sm font-semibold text-primary uppercase tracking-widest block mb-2">Qui som</span>
+                        <h2 class="text-4xl font-extrabold font-heading text-gray-900">VAOM EduTech</h2>
+                        <p class="text-gray-600 mt-4 text-lg leading-relaxed">
+                            Som una signatura líder i especialitzada en el disseny de formació digital d'avantguarda per al sector educatiu. Mitjançant metodologies actives i la darrera tecnologia pedagògica, acompanyem institucions en la seva transformació digital real.
+                        </p>
+                    </div>
+
+                    <!-- Missió i Visió Targetes B2B -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+                        <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-all">
+                            <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-primary mb-6">
+                                <i data-lucide="compass" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold font-heading text-gray-900 mb-3">La nostra visió</h3>
+                            <p class="text-gray-600 leading-relaxed text-sm">
+                                Posicionar-nos com el partner estratègic clau de centres educatius que cerquen una integració coherent, ètica i respectuosa amb la privadesa de la Intel·ligència Artificial a les seves aules.
+                            </p>
+                        </div>
+
+                        <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-all">
+                            <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-primary mb-6">
+                                <i data-lucide="history" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold font-heading text-gray-900 mb-3">Trajectòria i Experiència d'Èxit</h3>
+                            <p class="text-gray-600 leading-relaxed text-sm">
+                                El nostre team atresora una provada línia de treball amb administracions públiques del país que avalen els nostres dissenys de qualitat:
+                            </p>
+                            <div class="mt-4 pt-4 border-t border-gray-100 space-y-2">
+                                <div class="flex justify-between items-center text-xs">
+                                    <span class="font-bold text-gray-700">🏆 Projecte IA-Edu</span>
+                                    <span class="bg-purple-100 text-primary px-2.5 py-1 rounded-full font-semibold">Consorci d'Educació de Barcelona</span>
+                                </div>
+                                <div class="flex justify-between items-center text-xs">
+                                    <span class="font-bold text-gray-700">🌐 Escoles Connectades</span>
+                                    <span class="bg-purple-100 text-primary px-2.5 py-1 rounded-full font-semibold">Departament d'Educació</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- L'Equip Consultor -->
+                    <div class="border-t border-gray-200 pt-16">
+                        <div class="text-center mb-12">
+                            <h3 class="text-3xl font-bold font-heading text-gray-900">L'Equip Promotor</h3>
+                            <p class="text-gray-600 mt-2 text-sm max-w-xl mx-auto">Especialistes amb àmplia experiència en consultoria d'e-learning, educació i canvi metodològic.</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <!-- Alba Canas -->
+                            <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all text-center">
+                                <div class="w-24 h-24 mx-auto rounded-full bg-purple-100 flex items-center justify-center mb-4 border-2 border-primary/20">
+                                    <span class="text-3xl font-heading font-bold text-primary">AC</span>
+                                </div>
+                                <h3 class="text-lg font-bold font-heading text-gray-900">Alba Canas</h3>
+                                <p class="text-xs font-semibold text-primary/80 uppercase tracking-widest mt-1">Responsable de Qualitat</p>
+                                <p class="text-xs text-gray-500 mt-3 leading-relaxed">
+                                    Mestra de primària, coordinator digital i assessora experta en disseny i control de qualitat pedagògic.
+                                </p>
+                            </div>
+
+                            <!-- Miquel Àngel Fuentes -->
+                            <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all text-center">
+                                <div class="w-24 h-24 mx-auto rounded-full bg-purple-100 flex items-center justify-center mb-4 border-2 border-primary/20">
+                                    <span class="text-3xl font-heading font-bold text-primary">MF</span>
+                                </div>
+                                <h3 class="text-lg font-bold font-heading text-gray-900">Miquel Àngel Fuentes</h3>
+                                <p class="text-xs font-semibold text-primary/80 uppercase tracking-widest mt-1">Responsable de Planificació</p>
+                                <p class="text-xs text-gray-500 mt-3 leading-relaxed">
+                                    Expert en integració d'eines lingüístiques, implementador de canvi digital i assessor digital.
+                                </p>
+                            </div>
+
+                            <!-- Oriol Sánchez -->
+                            <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all text-center">
+                                <div class="w-24 h-24 mx-auto rounded-full bg-purple-100 flex items-center justify-center mb-4 border-2 border-primary/20">
+                                    <span class="text-3xl font-heading font-bold text-primary">OS</span>
+                                </div>
+                                <h3 class="text-lg font-bold font-heading text-gray-900">Oriol Sánchez</h3>
+                                <p class="text-xs font-semibold text-primary/80 uppercase tracking-widest mt-1">Disseny Tecnopedagògic</p>
+                                <p class="text-xs text-gray-500 mt-3 leading-relaxed">
+                                    Dissenyador d'instrucció, especialista en gamificació, narrativa d'entorns i producció audiovisual dinàmica.
+                                </p>
+                            </div>
+
+                            <!-- Víctor Palomares -->
+                            <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all text-center">
+                                <div class="w-24 h-24 mx-auto rounded-full bg-purple-100 flex items-center justify-center mb-4 border-2 border-primary/20">
+                                    <span class="text-3xl font-heading font-bold text-primary">VP</span>
+                                </div>
+                                <h3 class="text-lg font-bold font-heading text-gray-900">Víctor Palomares</h3>
+                                <p class="text-xs font-semibold text-primary/80 uppercase tracking-widest mt-1">Coordinació General</p>
+                                <p class="text-xs text-gray-500 mt-3 leading-relaxed">
+                                    Expert en ètica de dades, seguretat escolar digital, programari lliure i codi obert institucional.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+
+
+        <!-- ================= CONTENIDOR DE LA PÀGINA DE BLOG (SEPARADA) ================= -->
+        <div id="blog-page-container" class="hidden transition-all duration-300 py-16 bg-gray-50 min-h-screen">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6">
+                
+                <!-- Botó per tornar enrere de forma ràpida -->
+                <button onclick="navigateToLanding('home')" class="inline-flex items-center gap-2 text-primary hover:text-purple-900 font-semibold text-sm mb-8 transition-colors">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                    <span>Tornar a l'Inici</span>
+                </button>
+
+                <!-- Capçalera de l'article -->
+                <div class="text-center mb-10">
+                    <span class="text-xs font-bold text-primary bg-purple-100 px-3 py-1.5 rounded-full uppercase tracking-wider">Tecnopedagogia Crítica</span>
+                    <h1 class="text-3xl sm:text-5xl font-extrabold font-heading text-gray-900 mt-4 leading-tight">Intel·ligència Artificial a l'aula: Més enllà dels "prompts màgics"</h1>
+                    <p class="text-gray-500 text-xs mt-4">Publicat el 18 de Maig de 2026 • 5 minuts de lectura • Per l'equip de VAOM EduTech</p>
+                </div>
+
+                <!-- Entrada principal del Blog -->
+                <article class="bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-sm">
+                    <!-- Imatge principal de l'article -->
+                    <div class="h-64 sm:h-96 bg-purple-900 relative flex items-center justify-center overflow-hidden">
+                        <div class="absolute inset-0 bg-cover bg-center opacity-60 bg-[url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1200')]"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                    </div>
+
+                    <!-- Contingut editorial detallat -->
+                    <div class="p-6 sm:p-12 space-y-6 text-sm sm:text-base text-gray-600 leading-relaxed">
+                        <p class="text-lg font-semibold text-gray-900">
                             Molts docents es pregunten: "On puc trobar la llista definitiva de prompts per preparar les meves classes amb ChatGPT?" La resposta és contundent: aquesta llista no existeix. O, si més no, no et serà realment útil a mig termini.
                         </p>
                         <p>
-                            El veritable repte de la intel·ligència artificial generativa a les escoles no és aprendre a escriure una línia de codi o una instrucció prefixada que canviarà demà mateix. El que realment necessita el claustre és desenvolupar la seva <strong>Competència Digital Docent (CDD-IA)</strong> enfocada al criteri pedagògic.
+                            L'aparició massiva d'eines basades en models de llenguatge gran (LLMs) ha obert una cursa de recursos de consum ràpid. Malgrat això, el veritable repte de la intel·ligència artificial generativa a les escoles no és aprendre a escriure una línia de text o memoritzar ordres predefinides. El que realment necessita el claustre és desenvolupar la seva <strong>Competència Digital Docent (CDD-IA)</strong> enfocada a la presa de decisions conscients.
                         </p>
                         
                         <div class="bg-purple-50 p-6 rounded-2xl border-l-4 border-primary space-y-3">
-                            <h4 class="font-bold text-gray-900 text-xs uppercase tracking-wider">Els 3 Pilars per integrar la IA amb criteri pedagògic:</h4>
-                            <ul class="space-y-2 text-xs">
-                                <li class="flex gap-2">🛡️ <strong class="text-gray-900">Seguretat i Ètica:</strong> Avaluar com es gestionen les dades dels alumnes abans de recomanar qualsevol plataforma comercial.</li>
-                                <li class="flex gap-2">🔄 <strong class="text-gray-900">Adaptabilitat:</strong> Ajustar les respostes dels algorismes al teu context real de grup, atenent al Disseny Universal per a l'Aprenentatge (DUA).</li>
-                                <li class="flex gap-2">🎯 <strong class="text-gray-900">L'Aprenentatge Situat:</strong> Dissenyar activitats d'alt nivell cognitiu que la IA no pot replicar de manera asíncrona.</li>
+                            <h4 class="font-bold text-gray-900 text-xs sm:text-sm uppercase tracking-wider flex items-center gap-2">
+                                <i data-lucide="info" class="w-4 h-4 text-primary"></i>
+                                Els 3 Pilars per integrar la IA amb criteri pedagògic:
+                            </h4>
+                            <ul class="space-y-3 text-xs sm:text-sm">
+                                <li class="flex gap-2">
+                                    <span>🛡️</span>
+                                    <span><strong class="text-gray-900">Seguretat i Ètica:</strong> Abans de pujar treballs de l'alumnat a una web de tercers, cal valorar de quina manera es tracten aquestes dades sensibles i quina política de privadesa s'està aplicant.</span>
+                                </li>
+                                <li class="flex gap-2">
+                                    <span>🔄</span>
+                                    <span><strong class="text-gray-900">Adaptabilitat real:</strong> L'algorisme genera propostes genèriques. El toc didàctic i diferencial només l'aporta el docent en adaptar la seqüència al ritme de la seva aula sota paràmetres del DUA.</span>
+                                </li>
+                                <li class="flex gap-2">
+                                    <span>🎯</span>
+                                    <span><strong class="text-gray-900">L'Aprenentatge Situat:</strong> Dissenyar tasques que demanin esperit crític, cooperació i treball de camp; és a dir, situacions d'aprenentatge que la pròpia màquina és incapaç de resoldre de manera autònoma.</span>
+                                </li>
                             </ul>
                         </div>
 
                         <p>
-                            Si vols deixar de ser un usuari passiu i convertir-te en un dissenyador tecnopedagògic transformador capaç d'estalviar hores de feina administrativa i liderar el canvi educatiu del teu centre educatiu... has d'anar un pas més enllà.
+                            La IA ha d'actuar com una aliada, un assistent tecnològic que estalviï hores de treball mecànic (creació de plantilles de rúbriques, adaptació d'un text a un nivell lector més planer, o disseny d'estudis de cas realistes). D'aquesta manera, el professor pot alliberar temps per centrar-se en el que és veritablement imprescindible: <strong>el vincle humà i l'acompanyament personalitzat a l'aula</strong>.
                         </p>
 
-                        <!-- Call to Action integrat al Blog per fer l'enganxe -->
-                        <div class="mt-8 pt-8 border-t border-gray-100 text-center space-y-4">
-                            <h3 class="text-lg font-bold text-gray-900 font-heading">Vols aprendre a fer-ho de manera 100% interactiva i pràctica?</h3>
-                            <p class="text-xs text-gray-500 max-w-xl mx-auto">
-                                Hem estructurat una experiència formativa de 10 hores asíncrones basada en la gamificació i en els autèntics reptes que vius cada dia a l'aula.
+                        <p>
+                            Si vols deixar de ser un consumidor passiu de programari i convertir-te en un dissenyador tecnopedagògic de primer nivell, és hora de canviar d'estratègia.
+                        </p>
+
+                        <!-- Call to Action Integrat per augmentar les inscripcions del curs -->
+                        <div class="mt-12 pt-8 border-t border-gray-100 text-center bg-gray-50 rounded-2xl p-6 sm:p-8 space-y-4">
+                            <span class="inline-block bg-purple-100 text-primary text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">Acreditació de Criteri</span>
+                            <h3 class="text-xl sm:text-2xl font-bold text-gray-900 font-heading">Passa a l'acció amb el nostre curs adaptatiu</h3>
+                            <p class="text-xs sm:text-sm text-gray-500 max-w-xl mx-auto">
+                                Hem dissenyat un programa 100% asíncron de 10 hores on podràs resoldre aquests dilemes pràctics mitjançant el joc i el suport cooperatiu de centre.
                             </p>
-                            <button onclick="navigateTo('curs')" class="inline-flex items-center gap-2 bg-primary hover:bg-purple-900 text-white font-bold px-6 py-3 rounded-xl transition-all shadow-md text-xs">
+                            <button onclick="navigateToLanding('curs')" class="inline-flex items-center gap-2 bg-primary hover:bg-purple-900 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-md text-xs sm:text-sm">
                                 <span>Descobreix el Curs i registra't</span>
-                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                <i data-lucide="arrow-right" class="w-4 sm:w-5 h-4 sm:h-5"></i>
                             </button>
                         </div>
                     </div>
                 </article>
 
-            </div>
-        </section>
-
-        <!-- ================= PAGE 6: TESTIMONIS ================= -->
-        <section id="page-testimonis" class="page-section hidden py-16">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                
-                <!-- Presentació Testimonis -->
-                <div class="text-center max-w-2xl mx-auto mb-16">
-                    <span class="text-xs font-bold text-primary bg-purple-100 px-3 py-1.5 rounded-full uppercase tracking-wider">La veu dels usuaris</span>
-                    <h1 class="text-4xl font-extrabold font-heading text-gray-900 mt-4">Experiències de Centres Associats</h1>
-                    <p class="text-gray-500 text-sm mt-2">Diferents docents que han format part de les nostres cohorts prèvies avalen el canvi metodològic.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Testimoni 1 -->
-                    <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm flex flex-col justify-between hover:shadow-md transition-all">
-                        <div class="space-y-4">
-                            <div class="flex text-yellow-400">
-                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                            </div>
-                            <p class="text-gray-600 text-sm italic leading-relaxed">
-                                "Aquest curs m'ha canviat del tot la manera d'entendre la intel·ligència artificial dins de l'aula. Nova perspectiva adaptativa."
-                            </p>
+                <!-- Secció d'altres entrades simulades (Per un look totalment B2B professional) -->
+                <div class="mt-16 pt-8 border-t border-gray-200">
+                    <h3 class="text-xl font-bold font-heading text-gray-900 mb-6">Altres articles que et podrien interessar:</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs sm:text-sm">
+                        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow transition-all cursor-pointer" onclick="showToast('Aquest és un article de prova simulat per al blog.', '📚')">
+                            <span class="text-xxs text-primary font-bold uppercase">Privadesa</span>
+                            <h4 class="font-bold text-gray-900 mt-2">Noves lleis de protecció de dades de menors i com afecta l'ús de la IA generativa</h4>
+                            <p class="text-gray-400 text-xxs mt-2">Publicat fa 3 dies</p>
                         </div>
-                        <div class="mt-6 pt-4 border-t border-gray-50 flex items-center space-x-3">
-                            <div class="w-10 h-10 rounded-full bg-purple-100 text-primary flex items-center justify-center font-bold font-heading">
-                                MG
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-bold text-gray-900">Marta G.</h4>
-                                <p class="text-xs text-gray-400">Secundària, Barcelona</p>
-                            </div>
+                        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow transition-all cursor-pointer" onclick="showToast('Aquest és un article de prova simulat per al blog.', '📚')">
+                            <span class="text-xxs text-primary font-bold uppercase">Gamificació</span>
+                            <h4 class="font-bold text-gray-900 mt-2">Estratègies d'aprenentatge asíncron per optimitzar la formació a l'estiu</h4>
+                            <p class="text-gray-400 text-xxs mt-2">Publicat fa 1 setmana</p>
                         </div>
                     </div>
-
-                    <!-- Testimoni 2 -->
-                    <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm flex flex-col justify-between hover:shadow-md transition-all">
-                        <div class="space-y-4">
-                            <div class="flex text-yellow-400">
-                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                            </div>
-                            <p class="text-gray-600 text-sm italic leading-relaxed">
-                                "Els reptes gamificats em van enganxar per complet des del primer dia. Recomano el format micro-píndoles de 10 hores."
-                            </p>
-                        </div>
-                        <div class="mt-6 pt-4 border-t border-gray-50 flex items-center space-x-3">
-                            <div class="w-10 h-10 rounded-full bg-purple-100 text-primary flex items-center justify-center font-bold font-heading">
-                                JP
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-bold text-gray-900">Jordi P.</h4>
-                                <p class="text-xs text-gray-400">Mestre de Primària, Girona</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Testimoni 3 -->
-                    <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm flex flex-col justify-between hover:shadow-md transition-all">
-                        <div class="space-y-4">
-                            <div class="flex text-yellow-400">
-                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                            </div>
-                            <p class="text-gray-600 text-sm italic leading-relaxed">
-                                "Per fi trobo una formació professional que se centra a ensenyar-te com pensar pedagògicament d'una manera coherent."
-                            </p>
-                        </div>
-                        <div class="mt-6 pt-4 border-t border-gray-50 flex items-center space-x-3">
-                            <div class="w-10 h-10 rounded-full bg-purple-100 text-primary flex items-center justify-center font-bold font-heading">
-                                AR
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-bold text-gray-900">Anna R.</h4>
-                                <p class="text-xs text-gray-400">Professora de Batxillerat, Tarragona</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Formulari de contacte/consulta d'inscripcions -->
-                <div class="mt-16 bg-white border border-gray-100 rounded-3xl p-8 max-w-xl mx-auto shadow-sm">
-                    <h3 class="text-xl font-bold font-heading text-center text-gray-900 mb-6">Inscriu o demana pressupost per al teu centre</h3>
-                    <form onsubmit="handleContactSubmit(event)" class="space-y-4 text-xs">
-                        <div>
-                            <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Nom del Sol·licitant / Director</label>
-                            <input type="text" required class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="La vostra identificació">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Correu electrònic institucional</label>
-                            <input type="email" required class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="nom@xtec.cat o similar">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Mida aproximada de claustre i dubtes</label>
-                            <textarea rows="3" required class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="Com et podem ajudar..."></textarea>
-                        </div>
-                        <button type="submit" class="w-full bg-primary hover:bg-purple-900 text-white font-bold py-3.5 rounded-xl transition-all shadow-md">
-                            Sol·licitar Informació de Places i Preus
-                        </button>
-                    </form>
                 </div>
 
             </div>
-        </section>
+        </div>
 
     </main>
 
@@ -793,7 +817,7 @@
                 
                 <!-- Logotip i text descriptiu utilitzant la mateixa imatge del repositori de GitHub sense repetir text de costat -->
                 <div class="md:col-span-5 space-y-3">
-                    <div class="flex items-center cursor-pointer" onclick="navigateTo('home')">
+                    <div class="flex items-center cursor-pointer" onclick="navigateToLanding('home')">
                         <img src="imagen/logo.jpg" alt="Logo VAOM EduTech" class="h-12 w-auto object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         <div class="hidden px-4 py-2 rounded-xl bg-gradient-to-tr from-purple-800 to-indigo-600 items-center justify-center text-white font-heading font-bold text-sm shadow-md">
                             VAOM EduTech
@@ -804,16 +828,15 @@
                     </p>
                 </div>
 
-                <!-- Enllaços ràpids exactes del menú -->
+                <!-- Enllaços ràpids exactes del menú de scroll -->
                 <div class="md:col-span-4">
                     <h5 class="text-xs font-bold text-purple-400 uppercase tracking-widest mb-3">Navegació</h5>
                     <div class="grid grid-cols-2 gap-2 text-xs">
-                        <button onclick="navigateTo('home')" class="text-left hover:text-white transition-all">Inici</button>
-                        <button onclick="navigateTo('projecte')" class="text-left hover:text-white transition-all">Projecte</button>
-                        <button onclick="navigateTo('curs')" class="text-left hover:text-white transition-all">Curs</button>
-                        <button onclick="navigateTo('empresa')" class="text-left hover:text-white transition-all">Empresa</button>
-                        <button onclick="navigateTo('blog')" class="text-left hover:text-white transition-all">Blog</button>
-                        <button onclick="navigateTo('testimonis')" class="text-left hover:text-white transition-all">Testimonis</button>
+                        <button onclick="navigateToLanding('home')" class="text-left hover:text-white transition-all">Inici</button>
+                        <button onclick="navigateToLanding('projecte')" class="text-left hover:text-white transition-all">Projecte</button>
+                        <button onclick="navigateToLanding('curs')" class="text-left hover:text-white transition-all">Curs</button>
+                        <button onclick="navigateToLanding('empresa')" class="text-left hover:text-white transition-all">Empresa</button>
+                        <button onclick="navigateToBlog()" class="text-left hover:text-white transition-all">Blog</button>
                     </div>
                 </div>
 
@@ -839,44 +862,68 @@
         </div>
     </footer>
 
-    <!-- LÒGICA SCRIPT INTERACTIVA -->
+    <!-- LÒGICA SCRIPT INTERACTIVA (CONTROLS CONTINUS D'SCROLL I NAVEGACIÓ SPA) -->
     <script>
         // Inicialització de les icones de Lucide
         lucide.createIcons();
 
-        // Control de navegació per l'SPA (Single Page Application)
-        function navigateTo(pageId) {
-            // Amaga totes les pàgines
-            document.querySelectorAll('.page-section').forEach(section => {
-                section.classList.add('hidden');
-            });
+        // Estats de navegació globals
+        let onBlogPage = false;
+
+        // Navegació de desplaçament suau cap a les seccions de la Landing Page
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Navegar cap a la Landing Page (scroll infinit) i desplaçar-se fins a la secció indicada
+        function navigateToLanding(sectionId) {
+            onBlogPage = false;
             
-            // Mostra la pàgina activa
-            const activePage = document.getElementById(`page-${pageId}`);
-            if (activePage) {
-                activePage.classList.remove('hidden');
+            // Gestiona els contenidors de la SPA
+            document.getElementById('blog-page-container').classList.add('hidden');
+            document.getElementById('landing-page-container').classList.remove('hidden');
+
+            // Actualitza l'estat visual de la barra de navegació
+            Object.values(navButtons).forEach(btn => {
+                if (btn) btn.classList.remove('nav-active');
+            });
+            if (navButtons[sectionId]) {
+                navButtons[sectionId].classList.add('nav-active');
             }
 
-            // Actualitza l'estat visual dels botons del menú de navegació amb els IDs correctes
-            const navIds = ['home', 'projecte', 'curs', 'empresa', 'blog', 'testimonis'];
-            navIds.forEach(id => {
-                const navButton = document.getElementById(`nav-${id}`);
-                if (navButton) {
-                    if (id === pageId) {
-                        navButton.classList.add('nav-active');
-                    } else {
-                        navButton.classList.remove('nav-active');
-                    }
-                }
-            });
+            // Desplaça a la secció de forma suau
+            setTimeout(() => {
+                scrollToSection(sectionId);
+            }, 50);
+        }
 
-            // Torna a la part superior de la pantalla de manera suau
+        // Navegar cap a la pàgina de Blog separada
+        function navigateToBlog() {
+            onBlogPage = true;
+
+            // Gestiona els contenidors de la SPA
+            document.getElementById('landing-page-container').classList.add('hidden');
+            document.getElementById('blog-page-container').classList.remove('hidden');
+
+            // Actualitza l'estat actiu al menú de dalt
+            Object.values(navButtons).forEach(btn => {
+                if (btn) btn.classList.remove('nav-active');
+            });
+            const blogBtn = document.getElementById('nav-blog');
+            if (blogBtn) {
+                blogBtn.classList.add('nav-active');
+            }
+
+            // Scroll cap a dalt de tot de la nova pàgina
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // Navegació de desplaçament suau cap al vídeo d'inici
         function scrollToVideo() {
-            navigateTo('home');
+            navigateToLanding('home');
             setTimeout(() => {
                 const videoSection = document.getElementById('video-teaser-section');
                 if (videoSection) {
@@ -903,8 +950,42 @@
             });
         }
 
-        // Activació de la pàgina principal d'inici
-        navigateTo('home');
+        // DETECTOR D'INTERSECCIÓ (IntersectionObserver) per marcar actius els botons del menú en fer scroll
+        const sections = document.querySelectorAll('#landing-page-container section');
+        const navButtons = {
+            'home': document.getElementById('nav-home'),
+            'projecte': document.getElementById('nav-projecte'),
+            'curs': document.getElementById('nav-curs'),
+            'empresa': document.getElementById('nav-empresa'),
+            'blog': document.getElementById('nav-blog')
+        };
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '-50% 0px -50% 0px', // Activa l'enllaç quan el mòdul es troba a meitat de la pantalla
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            // Si estem en la pàgina de Blog, no processem el detector de scroll infinit
+            if (onBlogPage) return;
+
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    // Reset de tots els botons
+                    Object.values(navButtons).forEach(btn => {
+                        if (btn) btn.classList.remove('nav-active');
+                    });
+                    // Marcar actiu el corresponent
+                    if (navButtons[id]) {
+                        navButtons[id].classList.add('nav-active');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
 
         // Menú mòbil adaptatiu
         function toggleMobileMenu() {
@@ -917,7 +998,7 @@
             }
         }
 
-        // Base de dades local de contingut per als 7 reptes formatius (Page 4)
+        // Base de dades local de contingut per als 7 reptes formatius (Mòdul Curs)
         const challenges = [
             {
                 title: "Repte 0 — Diagnosi i punt de partida",
@@ -997,9 +1078,9 @@
                 const btn = document.getElementById(`btn-challenge-${i}`);
                 if (btn) {
                     if (i === index) {
-                        btn.className = "w-full text-left p-4 rounded-xl border border-primary bg-purple-50/50 text-gray-900 flex items-center justify-between transition-all font-semibold text-sm";
+                        btn.className = "w-full text-left p-4 rounded-xl border border-primary bg-white text-gray-900 flex items-center justify-between transition-all font-semibold text-sm shadow-sm";
                     } else {
-                        btn.className = "w-full text-left p-4 rounded-xl border border-gray-100 hover:bg-gray-50 text-gray-700 flex items-center justify-between transition-all text-sm";
+                        btn.className = "w-full text-left p-4 rounded-xl border border-gray-100 bg-white/70 hover:bg-white text-gray-700 flex items-center justify-between transition-all text-sm";
                     }
                 }
             }
