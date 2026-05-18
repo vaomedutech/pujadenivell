@@ -61,7 +61,7 @@
         🎓 <span class="font-bold">Projecte fictici</span> per a l’assignatura <span class="italic font-semibold">‘Disseny i gestió de projectes d'e-learning’</span> dins del <span class="font-bold">Màster universitari Online d'Educació i TIC (eLearning)</span> de la UOC.
     </div>
 
-    <!-- NAVEGACIÓ PRINCIPAL DE CONVERSIÓ (TÍTOLS OFICIALS REQUERITS) -->
+    <!-- NAVEGACIÓ PRINCIPAL DE CONVERSIÓ (TÍTOLS REQUERITS PER LA TUTORA) -->
     <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100 transition-all">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
@@ -74,16 +74,17 @@
                     </div>
                 </div>
 
-                <!-- Menú d'escriptori amb els títols exactes demanats per la tutora -->
+                <!-- Menú d'escriptori estructurat exactament com es demana -->
                 <nav class="hidden md:flex space-x-1 lg:space-x-3">
                     <button onclick="navigateTo('home')" id="nav-home" class="px-3.5 py-2 text-sm font-semibold text-gray-600 hover:text-primary transition-all rounded-md">Inici</button>
-                    <button onclick="navigateTo('empresa')" id="nav-empresa" class="px-3.5 py-2 text-sm font-semibold text-gray-600 hover:text-primary transition-all rounded-md">L'Empresa</button>
-                    <button onclick="navigateTo('projecte')" id="nav-projecte" class="px-3.5 py-2 text-sm font-semibold text-gray-600 hover:text-primary transition-all rounded-md">El Projecte</button>
-                    <button onclick="navigateTo('curs')" id="nav-curs" class="px-3.5 py-2 text-sm font-semibold text-gray-600 hover:text-primary transition-all rounded-md">El Curs</button>
+                    <button onclick="navigateTo('projecte')" id="nav-projecte" class="px-3.5 py-2 text-sm font-semibold text-gray-600 hover:text-primary transition-all rounded-md">Projecte</button>
+                    <button onclick="navigateTo('curs')" id="nav-curs" class="px-3.5 py-2 text-sm font-semibold text-gray-600 hover:text-primary transition-all rounded-md">Curs</button>
+                    <button onclick="navigateTo('empresa')" id="nav-empresa" class="px-3.5 py-2 text-sm font-semibold text-gray-600 hover:text-primary transition-all rounded-md">Empresa</button>
+                    <button onclick="navigateTo('blog')" id="nav-blog" class="px-3.5 py-2 text-sm font-semibold text-gray-600 hover:text-primary transition-all rounded-md">Blog</button>
                     <button onclick="navigateTo('testimonis')" id="nav-testimonis" class="px-3.5 py-2 text-sm font-semibold text-gray-600 hover:text-primary transition-all rounded-md">Testimonis</button>
                 </nav>
 
-                <!-- Botó d'acció de la capçalera que redirigeix directament a "El Curs" -->
+                <!-- Botó d'acció de la capçalera que redirigeix directament a la pestanya del Curs -->
                 <div class="hidden md:flex items-center">
                     <button onclick="navigateTo('curs')" class="bg-primary hover:bg-purple-900 text-white font-bold text-xs lg:text-sm px-6 py-3 rounded-xl transition-all shadow-md shadow-purple-950/20 flex items-center gap-2">
                         <span>Veure el curs</span>
@@ -103,9 +104,10 @@
         <!-- Menú desplegable per a mòbils -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 px-4 pt-2 pb-6 space-y-2 transition-all">
             <button onclick="navigateTo('home'); toggleMobileMenu()" class="block w-full text-left px-4 py-3 text-base font-semibold text-gray-700 hover:bg-purple-50 hover:text-primary rounded-lg">Inici</button>
-            <button onclick="navigateTo('empresa'); toggleMobileMenu()" class="block w-full text-left px-4 py-3 text-base font-semibold text-gray-700 hover:bg-purple-50 hover:text-primary rounded-lg">L'Empresa</button>
-            <button onclick="navigateTo('projecte'); toggleMobileMenu()" class="block w-full text-left px-4 py-3 text-base font-semibold text-gray-700 hover:bg-purple-50 hover:text-primary rounded-lg">El Projecte</button>
-            <button onclick="navigateTo('curs'); toggleMobileMenu()" class="block w-full text-left px-4 py-3 text-base font-semibold text-gray-700 hover:bg-purple-50 hover:text-primary rounded-lg">El Curs</button>
+            <button onclick="navigateTo('projecte'); toggleMobileMenu()" class="block w-full text-left px-4 py-3 text-base font-semibold text-gray-700 hover:bg-purple-50 hover:text-primary rounded-lg">Projecte</button>
+            <button onclick="navigateTo('curs'); toggleMobileMenu()" class="block w-full text-left px-4 py-3 text-base font-semibold text-gray-700 hover:bg-purple-50 hover:text-primary rounded-lg">Curs</button>
+            <button onclick="navigateTo('empresa'); toggleMobileMenu()" class="block w-full text-left px-4 py-3 text-base font-semibold text-gray-700 hover:bg-purple-50 hover:text-primary rounded-lg">Empresa</button>
+            <button onclick="navigateTo('blog'); toggleMobileMenu()" class="block w-full text-left px-4 py-3 text-base font-semibold text-gray-700 hover:bg-purple-50 hover:text-primary rounded-lg">Blog</button>
             <button onclick="navigateTo('testimonis'); toggleMobileMenu()" class="block w-full text-left px-4 py-3 text-base font-semibold text-gray-700 hover:bg-purple-50 hover:text-primary rounded-lg">Testimonis</button>
             <div class="pt-4 border-t border-gray-100">
                 <button onclick="navigateTo('curs'); toggleMobileMenu()" class="w-full bg-primary text-white text-center py-3 rounded-lg font-bold shadow-md">
@@ -551,8 +553,7 @@
                                     <h4 class="text-xl font-bold font-heading" id="chall-title">Repte 0 — Diagnosi i punt de partida</h4>
                                 </div>
                                 <p class="text-gray-600 text-sm leading-relaxed" id="chall-desc">
-                                    Primer contacte interactiu amb el curs. L'objectiu és situar el teu punt de partida competencial, conèixer el teu nivell de sortida pel que fa a coneixements d'IA i familiaritzar-te amb l'entorn de treball virtual de l'Odissea.
-                                </p>
+                                    Primer contacte interactiu amb el curs. L'objectiu és situar el teu punt de partida competencial, conèixer el teu nivell de sortida pel que fa a coneixements d'IA i familiaritzar-te amb l'entorn de treball virtual de l'Odissea.</p>
                                 <div class="bg-white p-4 rounded-xl border border-gray-100 space-y-2">
                                     <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block">Metes i Adquisicions</span>
                                     <ul class="text-xs text-gray-600 space-y-1.5" id="chall-bullets">
@@ -602,7 +603,69 @@
             </div>
         </section>
 
-        <!-- ================= PAGE 5: TESTIMONIS ================= -->
+        <!-- ================= PAGE 5: BLOG (NOVA SECCIÓ DE CAPTACIÓ) ================= -->
+        <section id="page-blog" class="page-section hidden py-16">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6">
+                
+                <!-- Capçalera del Blog -->
+                <div class="text-center mb-12">
+                    <span class="text-xs font-bold text-primary bg-purple-100 px-3 py-1.5 rounded-full uppercase tracking-wider">Idees i Tendències</span>
+                    <h1 class="text-4xl font-extrabold font-heading text-gray-900 mt-4">El nostre Blog Pedagògic</h1>
+                    <p class="text-gray-500 text-sm mt-2">Analitzem el futur de l'aprenentatge amb la intel·ligència artificial.</p>
+                </div>
+
+                <!-- Entrada del Blog per Fomentar l'enganxe -->
+                <article class="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-all">
+                    <!-- Imatge d'estil placeholder de qualitat -->
+                    <div class="h-64 sm:h-80 bg-purple-900 relative flex items-center justify-center overflow-hidden">
+                        <div class="absolute inset-0 bg-cover bg-center opacity-50 bg-[url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1200')]"></div>
+                        <div class="relative z-10 text-center p-6 text-white space-y-2">
+                            <span class="bg-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Tecnopedagogia</span>
+                            <h2 class="text-2xl sm:text-3xl font-bold font-heading">Intel·ligència Artificial a l'aula: Més enllà dels "prompts màgics"</h2>
+                            <p class="text-xs text-purple-200">Publicat el 18 de Maig de 2026 • Per l'equip de VAOM EduTech</p>
+                        </div>
+                    </div>
+
+                    <!-- Contingut del Post -->
+                    <div class="p-8 sm:p-10 space-y-6 text-sm text-gray-600 leading-relaxed">
+                        <p class="text-base font-semibold text-gray-900">
+                            Molts docents es pregunten: "On puc trobar la llista definitiva de prompts per preparar les meves classes amb ChatGPT?" La resposta és contundent: aquesta llista no existeix. O, si més no, no et serà realment útil a mig termini.
+                        </p>
+                        <p>
+                            El veritable repte de la intel·ligència artificial generativa a les escoles no és aprendre a escriure una línia de codi o una instrucció prefixada que canviarà demà mateix. El que realment necessita el claustre és desenvolupar la seva <strong>Competència Digital Docent (CDD-IA)</strong> enfocada al criteri pedagògic.
+                        </p>
+                        
+                        <div class="bg-purple-50 p-6 rounded-2xl border-l-4 border-primary space-y-3">
+                            <h4 class="font-bold text-gray-900 text-xs uppercase tracking-wider">Els 3 Pilars per integrar la IA amb criteri pedagògic:</h4>
+                            <ul class="space-y-2 text-xs">
+                                <li class="flex gap-2">🛡️ <strong class="text-gray-900">Seguretat i Ètica:</strong> Avaluar com es gestionen les dades dels alumnes abans de recomanar qualsevol plataforma comercial.</li>
+                                <li class="flex gap-2">🔄 <strong class="text-gray-900">Adaptabilitat:</strong> Ajustar les respostes dels algorismes al teu context real de grup, atenent al Disseny Universal per a l'Aprenentatge (DUA).</li>
+                                <li class="flex gap-2">🎯 <strong class="text-gray-900">L'Aprenentatge Situat:</strong> Dissenyar activitats d'alt nivell cognitiu que la IA no pot replicar de manera asíncrona.</li>
+                            </ul>
+                        </div>
+
+                        <p>
+                            Si vols deixar de ser un usuari passiu i convertir-te en un dissenyador tecnopedagògic transformador capaç d'estalviar hores de feina administrativa i liderar el canvi educatiu del teu centre educatiu... has d'anar un pas més enllà.
+                        </p>
+
+                        <!-- Call to Action integrat al Blog per fer l'enganxe -->
+                        <div class="mt-8 pt-8 border-t border-gray-100 text-center space-y-4">
+                            <h3 class="text-lg font-bold text-gray-900 font-heading">Vols aprendre a fer-ho de manera 100% interactiva i pràctica?</h3>
+                            <p class="text-xs text-gray-500 max-w-xl mx-auto">
+                                Hem estructurat una experiència formativa de 10 hores asíncrones basada en la gamificació i en els autèntics reptes que vius cada dia a l'aula.
+                            </p>
+                            <button onclick="navigateTo('curs')" class="inline-flex items-center gap-2 bg-primary hover:bg-purple-900 text-white font-bold px-6 py-3 rounded-xl transition-all shadow-md text-xs">
+                                <span>Descobreix el Curs i registra't</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ================= PAGE 6: TESTIMONIS ================= -->
         <section id="page-testimonis" class="page-section hidden py-16">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
@@ -741,23 +804,24 @@
                     </p>
                 </div>
 
-                <!-- Enllaços ràpids exactes -->
+                <!-- Enllaços ràpids exactes del menú -->
                 <div class="md:col-span-4">
                     <h5 class="text-xs font-bold text-purple-400 uppercase tracking-widest mb-3">Navegació</h5>
                     <div class="grid grid-cols-2 gap-2 text-xs">
                         <button onclick="navigateTo('home')" class="text-left hover:text-white transition-all">Inici</button>
-                        <button onclick="navigateTo('empresa')" class="text-left hover:text-white transition-all">L'Empresa</button>
-                        <button onclick="navigateTo('projecte')" class="text-left hover:text-white transition-all">El Projecte</button>
-                        <button onclick="navigateTo('curs')" class="text-left hover:text-white transition-all">El Curs</button>
+                        <button onclick="navigateTo('projecte')" class="text-left hover:text-white transition-all">Projecte</button>
+                        <button onclick="navigateTo('curs')" class="text-left hover:text-white transition-all">Curs</button>
+                        <button onclick="navigateTo('empresa')" class="text-left hover:text-white transition-all">Empresa</button>
+                        <button onclick="navigateTo('blog')" class="text-left hover:text-white transition-all">Blog</button>
                         <button onclick="navigateTo('testimonis')" class="text-left hover:text-white transition-all">Testimonis</button>
                     </div>
                 </div>
 
-                <!-- Segell de qualitat corporatiu -->
+                <!-- Segell de qualitat del Departament d'Educació d'alt impacte -->
                 <div class="md:col-span-3 text-left md:text-right">
                     <span class="inline-block bg-white/5 border border-white/10 rounded-xl p-3 text-left">
-                        <span class="block text-xxs font-bold text-purple-400 uppercase tracking-wider">Certificació</span>
-                        <span class="block text-xs text-white font-semibold mt-0.5">VAOM Certified</span>
+                        <span class="block text-xxs font-bold text-purple-400 uppercase tracking-wider">Acreditació</span>
+                        <span class="block text-xs text-white font-semibold mt-0.5">Curs reconegut pel Departament d'Educació</span>
                     </span>
                 </div>
             </div>
@@ -794,7 +858,7 @@
             }
 
             // Actualitza l'estat visual dels botons del menú de navegació amb els IDs correctes
-            const navIds = ['home', 'empresa', 'projecte', 'curs', 'testimonis'];
+            const navIds = ['home', 'projecte', 'curs', 'empresa', 'blog', 'testimonis'];
             navIds.forEach(id => {
                 const navButton = document.getElementById(`nav-${id}`);
                 if (navButton) {
