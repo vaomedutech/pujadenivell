@@ -56,6 +56,11 @@
 </head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
 
+    <!-- BARRA D'AVÍS ACADÈMIC A DALT DE TOT (MÀXIMA VISIBILITAT PER A LA TUTORA) -->
+    <div class="bg-purple-950 text-purple-100 text-xs py-3 px-4 text-center font-medium tracking-wide border-b border-purple-900 z-50 relative">
+        🎓 <span class="font-bold">Projecte fictici</span> per a l’assignatura <span class="italic font-semibold">‘Disseny i gestió de projectes d'e-learning’</span> dins del <span class="font-bold">Màster universitari Online d'Educació i TIC (eLearning)</span> de la UOC.
+    </div>
+
     <!-- NAVEGACIÓ PRINCIPAL DE CONVERSIÓ (TÍTOLS OFICIALS REQUERITS) -->
     <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100 transition-all">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -460,7 +465,7 @@
         <section id="page-curs" class="page-section hidden py-16">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
-                <!-- Presentació del Programa -->
+                <!-- Presentació del Programari -->
                 <div class="text-center max-w-3xl mx-auto mb-12">
                     <span class="text-xs font-bold text-primary bg-purple-100 px-3 py-1.5 rounded-full uppercase tracking-wider">L'Itinerari Formatiu</span>
                     <h1 class="text-4xl font-extrabold font-heading text-gray-900 mt-4">La nostra arquitectura curricular</h1>
@@ -601,6 +606,7 @@
         <section id="page-testimonis" class="page-section hidden py-16">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
+                <!-- Presentació Testimonis -->
                 <div class="text-center max-w-2xl mx-auto mb-16">
                     <span class="text-xs font-bold text-primary bg-purple-100 px-3 py-1.5 rounded-full uppercase tracking-wider">La veu dels usuaris</span>
                     <h1 class="text-4xl font-extrabold font-heading text-gray-900 mt-4">Experiències de Centres Associats</h1>
@@ -717,7 +723,7 @@
         <span id="toast-message">Notificació de simulació.</span>
     </div>
 
-    <!-- FOOTER COMERCIAL AMB LOGO ENLLAÇAT -->
+    <!-- FOOTER COMERCIAL AMB LOGO ENLLAÇAT I AVÍS ACADÈMIC SOL·LICITAT -->
     <footer class="bg-customDark text-gray-400 py-12 border-t border-purple-950">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center pb-8 border-b border-white/5">
@@ -756,14 +762,14 @@
                 </div>
             </div>
 
-            <!-- Avís final purament legal i professional -->
+            <!-- Avís final amb el text demanat pel lliurament del repte -->
             <div class="pt-8 flex flex-col sm:flex-row justify-between items-center text-center sm:text-left gap-4">
-                <p class="text-[11px] text-gray-500 max-w-2xl">
-                    © 2026 VAOM EduTech. Tots els drets reservats. Qualsevol reproducció, comunicació o adaptació de continguts requereix acord o consentiment previ per escrit.
+                <p class="text-[11px] text-gray-500 max-w-2xl leading-relaxed">
+                    Projecte fictici per a l’assignatura ‘Disseny i gestió de projectes d'e-learning’ dins del Màster universitari Online d'Educació i TIC (eLearning).
                 </p>
-                <div class="flex space-x-4 text-xs">
-                    <span class="text-[11px] text-gray-500">Avís Legal</span>
-                    <span class="text-[11px] text-gray-500">Privadesa i Dades</span>
+                <div class="flex space-x-4 text-xs whitespace-nowrap">
+                    <span class="text-[11px] text-gray-500">Ús Acadèmic</span>
+                    <span class="text-[11px] text-gray-500">UOC 2025-2026</span>
                 </div>
             </div>
         </div>
@@ -836,7 +842,6 @@
         // Activació de la pàgina principal d'inici
         navigateTo('home');
 
-        // Menú mòbil adaptatiu
         // Menú mòbil adaptatiu
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
